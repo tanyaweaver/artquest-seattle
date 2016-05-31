@@ -3,16 +3,21 @@
   var useMyGeolocation = document.getElementById('geolocation');
 
   var locations = [
-      ['Bondi Beach', -33.890542, 151.274856, 4],
-      ['Coogee Beach', -33.923036, 151.259052, 5],
-      ['Cronulla Beach', -34.028249, 151.157507, 3],
-      ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-      ['Maroubra Beach', -33.950198, 151.259302, 1]
+      ['Mcgilvra\'s Farm', 47.635467, -122.277917],
+      ['Signs of Life', 47.6851, -122.337583],
+      ['Baby Elephant', 47.669067, -122.34845],
+      ['In Transition is Unity', 47.705883, -122.322567],
+      ['Weather Prophet', 47.70575, -122.291367],
+      ['Aureole', 47.7243, -122.348633],
+      ['Fremont Canal Bench Project', 47.649883, -122.314983],
+      ['Little Liberty', 47.579383, -122.410633],
+      ['East is West', 47.59205, -122.317417],
+      ['Homage to Hokusai', 47.6814, -122.32695]
   ];
   var bounds = new google.maps.LatLngBounds();
   var mapOptions = {
-    // center: {lat: 47.618217, lng: -122.351832},
-    center: new google.maps.LatLng(-33.92, 151.25),
+    center: {lat: 47.618217, lng: -122.351832},
+    // center: new google.maps.LatLng(-33.92, 151.25),
     zoom: 10
   };
   var map = new google.maps.Map(document.getElementById('map'), mapOptions);
