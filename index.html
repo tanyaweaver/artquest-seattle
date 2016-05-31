@@ -9,18 +9,20 @@
 <body>
 <header>
   <ul id="top-nav">
-    <li id="logo">Logo</li>
-    <li id="home"><a href="./">Home</a></li>
-    <li id="about"><a href="./about">About</a></li>
+    <li>Logo</li>
+    <li><a href="./">Home</a></li>
+    <li><a href="./about">About</a></li>
   </ul>
 </header>
 
 <main>
 
-<ul id="signup-signin">
-  <li><a href="./signup">Sign Up</a></li>
-  <li><a href="./signin">Sign In</a></li>
-</ul>
+<section id="home-page">
+  <ul>
+    <li><a href="./signup">Sign Up</a></li>
+    <li><a href="./signin">Sign In</a></li>
+  </ul>
+</section>
 
 <section id="register-form">
    <form>
@@ -60,12 +62,18 @@
   <button id="back-to-list"><a href="./list+view">Back to List</a></button>
 </section>
 
+<section id="about">
+  <div id="team-info">Team info placeholder</div>
+</about>
+
 </main>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqDawTWjuMKPStGhOectV2wZESIrHLUo&v=3.exp&libraries=visualization"></script>
     <script src="vendor/scripts/jquery-2.1.4.js"></script>
     <script src="vendor/scripts/handlebars.js"></script>
-    <script src="scripts/controllers/homeController.js"></script>
     <script src="scripts/models/map.js"></script>
+    <script src="scripts/controllers/homeController.js"></script>
+    <script src="scripts/controllers/aboutController.js"></script>
+    <script src="scripts/controllers/registerFormController.js"></script>
     <script src="vendor/scripts/page.js"></script>
     <script src="scripts/controllers/routes.js"></script>
   </body>
