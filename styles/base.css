@@ -1,0 +1,40 @@
+body {
+  background-color: #f6eff7;
+}
+main {
+  width: 960px;
+  height:400px;
+  margin: 0 auto;
+}
+#landing-img {
+  width: 960px;
+  height: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+}
+
+header p {
+  font-family: 'Homemade Apple', cursive;
+  color: #c30045;
+  font-weight:900;
+  font-size: 25px;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+}
+
+a {
+}
+
+#logo-letter {
+
+}

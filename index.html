@@ -3,13 +3,15 @@
 <head>
   <title>Artquest Seattle</title>
   <link rel="stylesheet" href="styles/map.css">
+  <link rel="stylesheet" href="styles/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Kalam|Pacifico|Kaushan+Script|Pinyon+Script|Alex+Brush|Homemade+Apple|Parisienne" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 <header>
+  <p>Artquest &nbsp; Seattle</p>
   <ul id="top-nav">
-    <li>Logo</li>
     <li><a href="./">Home</a></li>
     <li><a href="./about">About</a></li>
   </ul>
@@ -18,9 +20,10 @@
 <main>
 
 <section id="home-page">
+  <img id="landing-img" src="assets/images/animated.gif">
   <ul>
-    <li><a href="./signup">Sign Up</a></li>
-    <li><a href="./signin">Sign In</a></li>
+    <li><button><a href="./signup">Sign Up</a></button></li>
+    <li><button><a href="./signin">Sign In</a></button></li>
   </ul>
 </section>
 
@@ -37,7 +40,7 @@
    </form>
 </section>
 
-<ul id="create-new-list">Create your list:
+<ul id="new-list">Create your list:
   <li id="1-day-challenge"><button><a href="./one+day+challenge">1-Day Challenge</a></button></li>
   <li id="2-day-challenge"><button><a href="./two+day+challenge">2-Day Challenge</a></button></li>
   <li id="show-all"><button><a href="./all+sites">Explore All Sites</a></button></li>
@@ -45,7 +48,7 @@
 </ul>
 
 <section id="list-page">
-  <ul id="created-list">Created List<ul>
+  <ul id="created-list">Created List</ul>
   <button id="see-map"><a href="./map-view">See Map</a></button>
   <button id="create-new-list"><a href="./create-new+list">Create New List</a></button>
 </section>
@@ -64,7 +67,7 @@
 
 <section id="about">
   <div id="team-info">Team info placeholder</div>
-</about>
+</section>
 
 </main>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqDawTWjuMKPStGhOectV2wZESIrHLUo&v=3.exp&libraries=visualization"></script>
