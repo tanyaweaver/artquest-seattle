@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Artquest Seattle</title>
+  <link rel="stylesheet" href="styles/map.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<header>
+  <ul id="top-nav">
+    <li>Logo</li>
+    <li><a href="./">Home</a></li>
+    <li><a href="./about">About</a></li>
+  </ul>
+</header>
+
+<main>
+<section id="all-tabs-except-map">
+    <section id="home-page">
+      <ul>
+        <li><a href="./register">Register</a></li>
+        <li><a href="./signin">Sign In</a></li>
+      </ul>
+    </section>
+
+    <section id="register-form">
+       <form>
+         <label for="nameInput">Your Name</label>
+         <input id="nameInput" type="text" placeholder="Screen Name">
+         <label for="emailInput">Your Email</label>
+         <input id="emailInput" type="email" placeholder="you@email.com">
+         <label for="passwordInput">Your Password</label>
+         <input id="passwordInput" type="text" placeholder="password">
+         <input id="register-button" type="submit" name="submit" value="Register">
+         <input id="sign-in-button" type="submit" name="sign-in" value="Sign In">
+         <input id="sign-out-button" type="submit" name="sign-out" value="Sign Out">
+
+       </form>
+       <button><a href="./new+list">Create List of Sites to Visit</a><button>
+    </section>
+
+    <ul id="new-list">Create your list:
+      <li id="one-day-challenge"><button><a href="./one+day">1-Day Challenge</a></button></li>
+      <li id="two-day-challenge"><button><a href="./two+day">2-Day Challenge</a></button></li>
+      <li id="show-all"><button><a href="./all+sites">Explore All Sites</a></button></li>
+      <li id="geolocation"><button><a href="./near+me">Explore Sites Near Me</a></button></li>
+    </ul>
+
+    <section id="list-view">
+      <ul id="created-list">Created List</ul>
+      <!-- <button id="see-map">See Map</button> -->
+      <button id="create-new-list"><a href="./new+list">Create New List</a></button>
+    </section>
+
+    <section id="about">
+      <div id="team-info">Team info placeholder</div>
+    </section>
+    <!-- <button id="back-to-list">Back to List</button> -->
+</section>
+
+
+<section id="map-view">
+    <div id="map"></div>
+</section>
+
+</main>
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+     <script>
+     // Initialize Firebase
+        var config = {
+        apiKey: "AIzaSyCaT66NMy0dlYWAEdT3Maz7Xi2GvhpC10g",
+        authDomain: "artquest-seattle.firebaseapp.com",
+        databaseURL: "https://artquest-seattle.firebaseio.com",
+        storageBucket: "artquest-seattle.appspot.com",
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqDawTWjuMKPStGhOectV2wZESIrHLUo&v=3.exp&libraries=visualization"></script>
+    <script src="vendor/scripts/jquery-2.1.4.js"></script>
+    <script src="vendor/scripts/handlebars.js"></script>
+
+    <script src="scripts/models/onMap.js"></script>
+    <script src="scripts/models/locations.js"></script>
+
+    <script src="scripts/views/listView.js"></script>
+    <script src="scripts/views/mapView.js"></script>
+
+    <script src="scripts/controllers/homeController.js"></script>
+    <script src="scripts/controllers/aboutController.js"></script>
+    <script src="scripts/controllers/registerController.js"></script>
+    <script src="scripts/controllers/signinController.js"></script>
+    <script src="scripts/controllers/createListController.js"></script>
+    <script src="scripts/controllers/listController.js"></script>
+
+    <script src="vendor/scripts/page.js"></script>
+    <script src="scripts/controllers/routes.js"></script>
+    <script src="scripts/models/art.js"></script>
+    <script src="scripts/models/users.js"></script>
+  </body>
+<footer>
+</footer>
+</html>
