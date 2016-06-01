@@ -3,14 +3,21 @@
   artList.all = [];
 
   artList.requestList = function(callback) {
-  $.ajax({
-    url: "https://data.seattle.gov/resource/249z-59hj",
-    type: 'GET',
-    success: function(data, message, xhr) {
-      artList.all = data;
+    debugger;
+    if (artList.all.length === 0 ) {
+      $.ajax({
+        url: 'https://data.seattle.gov/resource/249z-59hj',
+        type: 'GET',
+        success: function(data, message, xhr) {
+          artList.all = data;
+        },
+        error: function(xhr, options, error) {
+          console.log(xhr.status,error);
+        }
+
+      })
+      .done(callback);
     }
-  })
-  .done(callback);
-  }
+  };
   module.artList = artList;
 })(window);
