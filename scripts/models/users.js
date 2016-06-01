@@ -10,7 +10,7 @@ var artquestUser = new User();
 
 // var ref = firebase.database();
 
-$('#register').on('click', function() {
+$('#register-button').on('click', function() {
   console.log('Register Button clicked');
   artquestUser.register();
   // debugger;
