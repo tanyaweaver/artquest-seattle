@@ -39,27 +39,21 @@
 </section>
 
 <ul id="new-list">Create your list:
-  <li id="1-day-challenge"><button><a href="./list+view">1-Day Challenge</a></button></li>
-  <li id="2-day-challenge"><button><a href="./list+view">2-Day Challenge</a></button></li>
-  <li id="show-all"><button><a href="./list+view">Explore All Sites</a></button></li>
-  <li id="geolocation"><button><a href="./list+view">Explore Sites Near Me</a></button></li>
+  <li id="one-day-challenge"><button><a href="./one+day">1-Day Challenge</a></button></li>
+  <li id="two-day-challenge"><button><a href="./two+day">2-Day Challenge</a></button></li>
+  <li id="show-all"><button><a href="./all+sites">Explore All Sites</a></button></li>
+  <li id="geolocation"><button><a href="./near+me">Explore Sites Near Me</a></button></li>
 </ul>
 
 <section id="list-view">
   <ul id="created-list">Created List</ul>
-  <button id="see-map"><a href="./map+view">See Map</a></button>
+  <!-- <button id="see-map"><a href="./map+view">See Map</a></button> -->
+  <button id="see-map">See Map</button>
   <button id="create-new-list"><a href="./new+list">Create New List</a></button>
 </section>
 
 <section id="map-view">
-  <div id="map-1-day-challenge"></div>
-
-  <div id="map-2-day-challenge"></div>
-
-  <div id="map-all-sites"></div>
-
-  <div id="map-sites-based-on-current-location"></div>
-
+  <div id="map"></div>
   <button id="back-to-list"><a href="./list+view">Back to List</a></button>
 </section>
 
@@ -72,6 +66,9 @@
     <script src="vendor/scripts/jquery-2.1.4.js"></script>
     <script src="vendor/scripts/handlebars.js"></script>
     <script src="scripts/models/map.js"></script>
+
+    <script src="scripts/views/listView.js"></script>
+    <script src="scripts/views/mapView.js"></script>
 
     <script src="scripts/controllers/homeController.js"></script>
     <script src="scripts/controllers/aboutController.js"></script>

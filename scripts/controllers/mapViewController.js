@@ -1,7 +1,8 @@
 (function(module) {
   var mapViewController = {};
-  mapViewController.index = function() {
-    $('#map-view').show().siblings().hide();
+  mapViewController.index = function(ctx, next) {
+    mapView.index(ctx.locations);
   };
+
   module.mapViewController = mapViewController;
 })(window);
