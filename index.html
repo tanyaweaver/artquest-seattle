@@ -16,51 +16,52 @@
 </header>
 
 <main>
+<section id="all-tabs-except-map">
+    <section id="home-page">
+      <ul>
+        <li><a href="./register">Register</a></li>
+        <li><a href="./signin">Sign In</a></li>
+      </ul>
+    </section>
 
-<section id="home-page">
-  <ul>
-    <li><a href="./register">Register</a></li>
-    <li><a href="./signin">Sign In</a></li>
-  </ul>
+    <section id="register-form">
+       <form>
+         <label for="nameInput">Your Name</label>
+         <input id="nameInput" type="text" placeholder="Screen Name">
+         <label for="emailInput">Your Email</label>
+         <input id="emailInput" type="email" placeholder="you@email.com">
+         <label for="passwordInput">Your Password</label>
+         <input id="passwordInput" type="text" placeholder="password">
+         <input id="register-button" type="submit" name="submit" value="Register">
+         <input id="sign-in-button" type="submit" name="sign-in" value="Sign In">
+         <input id="sign-out-button" type="submit" name="sign-out" value="Sign Out">
+
+       </form>
+       <button><a href="./new+list">Create List of Sites to Visit</a><button>
+    </section>
+
+    <ul id="new-list">Create your list:
+      <li id="one-day-challenge"><button><a href="./one+day">1-Day Challenge</a></button></li>
+      <li id="two-day-challenge"><button><a href="./two+day">2-Day Challenge</a></button></li>
+      <li id="show-all"><button><a href="./all+sites">Explore All Sites</a></button></li>
+      <li id="geolocation"><button><a href="./near+me">Explore Sites Near Me</a></button></li>
+    </ul>
+
+    <section id="list-view">
+      <ul id="created-list">Created List</ul>
+      <!-- <button id="see-map">See Map</button> -->
+      <button id="create-new-list"><a href="./new+list">Create New List</a></button>
+    </section>
+
+    <section id="about">
+      <div id="team-info">Team info placeholder</div>
+    </section>
+    <!-- <button id="back-to-list">Back to List</button> -->
 </section>
 
-<section id="register-form">
-   <form>
-     <label for="nameInput">Your Name</label>
-     <input id="nameInput" type="text" placeholder="Screen Name">
-     <label for="emailInput">Your Email</label>
-     <input id="emailInput" type="email" placeholder="you@email.com">
-     <label for="passwordInput">Your Password</label>
-     <input id="passwordInput" type="text" placeholder="password">
-     <input id="register-button" type="submit" name="submit" value="Register">
-     <input id="sign-in-button" type="submit" name="sign-in" value="Sign In">
-     <input id="sign-out-button" type="submit" name="sign-out" value="Sign Out">
-
-   </form>
-   <button><a href="./new+list">Create List of Sites to Visit</a><button>
-</section>
-
-<ul id="new-list">Create your list:
-  <li id="one-day-challenge"><button><a href="./one+day">1-Day Challenge</a></button></li>
-  <li id="two-day-challenge"><button><a href="./two+day">2-Day Challenge</a></button></li>
-  <li id="show-all"><button><a href="./all+sites">Explore All Sites</a></button></li>
-  <li id="geolocation"><button><a href="./near+me">Explore Sites Near Me</a></button></li>
-</ul>
-
-<section id="list-view">
-  <ul id="created-list">Created List</ul>
-  <!-- <button id="see-map"><a href="./map+view">See Map</a></button> -->
-  <button id="see-map">See Map</button>
-  <button id="create-new-list"><a href="./new+list">Create New List</a></button>
-</section>
 
 <section id="map-view">
-  <button id="back-to-list">Back to List</button>
-  <div id="map"></div>
-</section>
-
-<section id="about">
-  <div id="team-info">Team info placeholder</div>
+    <div id="map"></div>
 </section>
 
 </main>
