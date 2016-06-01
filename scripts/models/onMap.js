@@ -7,18 +7,20 @@
 
   var infoWindow;
 
-  onMap.resizeMap = function() {
-    google.maps.event.addDomListener(window, 'resize', function() {
-      var center = map.getCenter();
-      google.maps.event.trigger(map, 'resize');
-      map.setCenter(center);
-    });
-  };
+  // onMap.resizeMap = function() {
+  //   google.maps.event.addDomListener(window, 'resize', function() {
+  //     var center = map.getCenter();
+  //     google.maps.event.trigger(map, 'resize');
+  //     map.setCenter(center);
+  //   });
+  // };
 
   onMap.placeMarkers = function(locationsArray) {
     infoWindow = new google.maps.InfoWindow({map: map});
     var bounds = new google.maps.LatLngBounds();
     var marker;
+    var currentLocation = map.getCenter();
+    bounds.extend(currentLocation);
     for(var i = 0; i < locationsArray.length; i++) {
       var position = new google.maps.LatLng(locationsArray[i][1], locationsArray[i][2]);
       bounds.extend(position);
@@ -64,6 +66,11 @@
       infoWindow.setPosition(pos);
       infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
     }
+    google.maps.event.addDomListener(window, 'resize', function() {
+      var center = map.getCenter();
+      google.maps.event.trigger(map, 'resize');
+      map.setCenter(center);
+    });
   })();
 
   module.onMap = onMap;
