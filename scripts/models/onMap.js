@@ -39,7 +39,7 @@
     }
   };
 
-  onMap.showMyGeolocation = function() {
+  (onMap.showMyGeolocation = function() {
     infoWindow = new google.maps.InfoWindow({map: map});
 
     if(navigator.geolocation) {
@@ -48,7 +48,9 @@
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
+        console.log(map.getCenter() + 'before setCenter(pos)');
         map.setCenter(pos);
+        console.log(map.getCenter() + 'after setCenter(pos)');
         infoWindow.setPosition(pos);
         infoWindow.setContent('You are here');
       }, function() {
@@ -62,7 +64,7 @@
       infoWindow.setPosition(pos);
       infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
     }
-  };
+  })();
 
   module.onMap = onMap;
 })(window);

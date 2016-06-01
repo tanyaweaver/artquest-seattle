@@ -2,7 +2,7 @@
   var mapView = {};
 
   mapView.renderMap = function(locations) {
-    onMap.showMyGeolocation();
+    // onMap.showMyGeolocation();
     onMap.resizeMap();
     onMap.placeMarkers(locations);
   };
