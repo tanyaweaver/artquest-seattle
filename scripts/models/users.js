@@ -1,6 +1,7 @@
 function User() {
   this.userID = '';
   this.userEmail = '';
+  this.userName = '';
   this.userPassword = '';
   this.userArtList = [];
   this.userQuests = [];
@@ -10,10 +11,10 @@ var artquestUser = new User();
 
 // var ref = firebase.database();
 
-$('#register-button').on('click', function() {
+$('#register-button').on('click', function(e) {
+  e.preventDefault();
   console.log('Register Button clicked');
   artquestUser.register();
-  // debugger;
 });
 
 $('#sign-in-button').on('click', function(e) {
@@ -29,8 +30,8 @@ $('#sign-out-button').on('click', function(e) {
 });
 
 User.prototype.register = function() {
-  // debugger;
   console.log('Registering a new user');
+  this.userName = $('#nameInput').val();
   var email = $('#emailInput').val();
   var password = $('#passwordInput').val();
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
@@ -38,45 +39,30 @@ User.prototype.register = function() {
     var errorCode = error.code;
     var errorMessage = error.message;
     console.log('error ', errorMessage);
-    // debugger;
   });
-  // debugger;
 };
-
-var test = '';
-userSignIn = function() {
-  console.log('user sign in');
-  // var email = $('#emailInput').val();
-  // var password = $('#passwordInput').val();
-  var email = 'jill@jill.com';
-  var password = 'jilljill';
-
-  test = firebase.auth().signInWithEmailAndPassword(email, password);
-};
-
 
 User.prototype.signIn = function() {
   console.log('user sign in');
   var email = $('#emailInput').val();
   var password = $('#passwordInput').val();
-
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
     //handle errors here
     var errorCode = error.code;
     var errorMessage = error.message;
     console.log('error ', errorMessage);
-    debugger;
   });
 };
 
 User.prototype.signOut = function () {
-  // debugger;
   firebase.auth().signOut().then(function() {
     // Sign-out successful.
     console.log('user signed out');
     artList.all = [];
     artquestUser.userArtList = [];
     artquestUser.userID = '';
+    artquestUser.userName = '';
+    artquestUser.userEmail = '';
   }, function(error) {
     // An error happened.
     console.log('error signing out');
@@ -92,14 +78,18 @@ User.prototype.loadUserData = function () {
 };
 
 User.prototype.getUserData = function () {
-  var userID = firebase.auth().currentUser.uid;
-  firebase.database().ref('/users/' + userID).once('value').then(function(snapshot) {
+  var user = firebase.auth().currentUser;
+  var userID = user.uid;
+  this.userID = user.uid;
+  this.userName = user.displayName;
+  this.userEmail = user.email;
+
+  firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
     if (snapshot.val() === null ) {
       artList.requestList(function(){
-        firebase.database().ref('users/' + userID).set({
-          userArtList: artList.all
+        firebase.database().ref('users/' + user.uid).set({
+          userArtList: artList.all, userName: user.displayName
         });
-        debugger;
         artquestUser.userArtList = artList.all;
       });
     } else {
@@ -111,13 +101,25 @@ User.prototype.getUserData = function () {
 };
 
 User.prototype.signedIn = function() {
-
   var user = firebase.auth().currentUser;
   console.log(user.uid + ' signed in');
   if (user != null) {
-    this.name = user.displayName;
-    this.userID = user.uid;
-    this.getUserData();
+    if (user.displayName === null){
+      if (this.userName != ''){
+        user.updateProfile({
+          displayName: this.userName,
+          // photoURL: "https://example.com/jane-q-user/profile.jpg"
+        }).then(function() {
+          // Update successful.
+          artquestUser.getUserData();
+        }, function(error) {
+          // An error happened.
+          console.log('Error updating user name in profile.');
+        });
+      }
+    } else {
+      artquestUser.getUserData();
+    }
   }
 };
 
@@ -127,6 +129,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     artquestUser.signedIn();
   } else {
     console.log('no current user signed in');
-    // user.signedOut();
+    // artquestUser.signedOut();
   }
 });
