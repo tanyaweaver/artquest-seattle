@@ -1,9 +1,13 @@
 (function(module) {
   var listView = {};
-  listView.index = function(locations) {
-    // $('#list-view').show().siblings().hide();
+
+  listView.renderList = function(locations) {
+
+  };
+
+  listView.index = function() {
     $('#list-view').show().siblings().hide();
-    console.log(locations);
+    $('#see-map').on('click', mapView.index);
   };
 
   module.listView = listView;

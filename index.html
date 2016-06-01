@@ -53,8 +53,8 @@
 </section>
 
 <section id="map-view">
+  <button id="back-to-list">Back to List</button>
   <div id="map"></div>
-  <button id="back-to-list"><a href="./list+view">Back to List</a></button>
 </section>
 
 <section id="about">
@@ -65,7 +65,9 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqDawTWjuMKPStGhOectV2wZESIrHLUo&v=3.exp&libraries=visualization"></script>
     <script src="vendor/scripts/jquery-2.1.4.js"></script>
     <script src="vendor/scripts/handlebars.js"></script>
-    <script src="scripts/models/map.js"></script>
+
+    <script src="scripts/models/onMap.js"></script>
+    <script src="scripts/models/locations.js"></script>
 
     <script src="scripts/views/listView.js"></script>
     <script src="scripts/views/mapView.js"></script>
@@ -75,8 +77,7 @@
     <script src="scripts/controllers/registerController.js"></script>
     <script src="scripts/controllers/signinController.js"></script>
     <script src="scripts/controllers/createListController.js"></script>
-    <script src="scripts/controllers/listViewController.js"></script>
-    <script src="scripts/controllers/mapViewController.js"></script>
+    <script src="scripts/controllers/listController.js"></script>
 
     <script src="vendor/scripts/page.js"></script>
     <script src="scripts/controllers/routes.js"></script>

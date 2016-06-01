@@ -1,8 +1,15 @@
 (function(module) {
   var mapView = {};
-  mapView.index = function(locations) {
+
+  mapView.renderMap = function(locations) {
+    onMap.showMyGeolocation();
+    onMap.resizeMap();
+    onMap.placeMarkers(locations);
+  };
+
+  mapView.index = function() {
     $('#map-view').show().siblings().hide();
-    Locations.renderMap(locations);
+    $('#back-to-list').on('click', listView.index);
   };
 
   module.mapView = mapView;
