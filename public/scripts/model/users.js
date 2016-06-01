@@ -16,16 +16,17 @@ $('#register').on('click', function() {
   // debugger;
 });
 
-$('#sign-in-button').on('click', function() {
+$('#sign-in-button').on('click', function(e) {
+  e.preventDefault();
   console.log('sign-in Button clicked');
-  userSignIn();
+  artquestUser.signIn();
 });
 
-$('#sign-out-button').on('click', function() {
+$('#sign-out-button').on('click', function(e) {
+  e.preventDefault();
   console.log('sign-Out Button clicked');
   artquestUser.signOut();
 });
-
 
 User.prototype.register = function() {
   // debugger;
@@ -42,18 +43,23 @@ User.prototype.register = function() {
   // debugger;
 };
 
-
+var test = '';
 userSignIn = function() {
   console.log('user sign in');
-  var email = $('#emailInput').val();
-  var password = $('#passwordInput').val();
-  var test = firebase.auth().signInWithEmailAndPassword(email, password);
+  // var email = $('#emailInput').val();
+  // var password = $('#passwordInput').val();
+  var email = 'jill@jill.com';
+  var password = 'jilljill';
+
+  test = firebase.auth().signInWithEmailAndPassword(email, password);
 };
+
 
 User.prototype.signIn = function() {
   console.log('user sign in');
   var email = $('#emailInput').val();
   var password = $('#passwordInput').val();
+
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
     //handle errors here
     var errorCode = error.code;
