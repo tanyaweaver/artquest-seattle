@@ -100,6 +100,12 @@ User.prototype.getUserData = function () {
   });
 };
 
+User.prototype.checkInWithCurrentLocation = function (lat1,lon1, lat2,lon2) {
+  var φ1 = lat1.toRadians(), φ2 = lat2.toRadians(), Δλ = (lon2 - lon1).toRadians(), R = 6371e3; // gives d in metres
+  var d = Math.acos( Math.sin(φ1) * Math.sin(φ2) + Math.cos(φ1) * Math.cos(φ2) * Math.cos(Δλ) ) * R;
+  console.log('Distance: ', d);
+};
+
 User.prototype.signedIn = function() {
   var user = firebase.auth().currentUser;
   console.log(user.uid + ' signed in');
