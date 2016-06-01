@@ -60,6 +60,10 @@
   <div id="map-sites-based-on-current-location"></div>
 
   <button id="back-to-list"><a href="./list+view">Back to List</a></button>
+
+  <div id="map" class="">
+
+  </div>
 </section>
 
 <section id="about">
@@ -68,15 +72,15 @@
 
 </main>
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-    <script>
+     <script>
      // Initialize Firebase
-     var config = {
-       apiKey: "AIzaSyCaT66NMy0dlYWAEdT3Maz7Xi2GvhpC10g",
-       authDomain: "artquest-seattle.firebaseapp.com",
-       databaseURL: "https://artquest-seattle.firebaseio.com",
-       storageBucket: "artquest-seattle.appspot.com",
-     };
-     firebase.initializeApp(config);
+    var config = {
+    apiKey: "AIzaSyCaT66NMy0dlYWAEdT3Maz7Xi2GvhpC10g",
+    authDomain: "artquest-seattle.firebaseapp.com",
+    databaseURL: "https://artquest-seattle.firebaseio.com",
+    storageBucket: "artquest-seattle.appspot.com",
+    };
+    firebase.initializeApp(config);
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqDawTWjuMKPStGhOectV2wZESIrHLUo&v=3.exp&libraries=visualization"></script>
     <script src="vendor/scripts/jquery-2.1.4.js"></script>
@@ -87,6 +91,9 @@
     <script src="scripts/controllers/registerFormController.js"></script>
     <script src="vendor/scripts/page.js"></script>
     <script src="scripts/controllers/routes.js"></script>
+    <script src="scripts/model/users.js"></script>
+    <script src="scripts/model/art.js"></script>
+
   </body>
 <footer>
 </footer>

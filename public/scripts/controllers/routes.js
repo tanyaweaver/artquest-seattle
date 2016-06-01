@@ -1,1 +1,3 @@
-page('/', artList.requestList());
+page('/', homeController.index);
+page('/about', aboutController.index);
+page();
