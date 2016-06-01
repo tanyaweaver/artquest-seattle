@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Artquest Seattle</title>
+  <link rel="stylesheet" href="styles/map.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<header>
+  <ul id="top-nav">
+    <li>Logo</li>
+    <li><a href="./">Home</a></li>
+    <li><a href="./about">About</a></li>
+  </ul>
+</header>
+
+<main>
+
+<section id="home-page">
+  <ul>
+    <li><a href="./signup">Sign Up</a></li>
+    <li><a href="./signin">Sign In</a></li>
+  </ul>
+</section>
+
+<section id="register-form">
+   <form>
+     <label for="nameInput">Your Name</label>
+     <input id="nameInput" type="text" placeholder="Screen Name">
+     <label for="emailInput">Your Email</label>
+     <input id="emailInput" type="email" placeholder="you@email.com">
+     <label for="passwordInput">Your Password</label>
+     <input id="passwordInput" type="text" placeholder="password">
+     <input id="register" type="submit" name="submit" value="submit">
+     <input id="sign-in" type="submit" name="sign-in" value="signin">
+   </form>
+</section>
+
+<ul id="create-new-list">Create your list:
+  <li id="1-day-challenge"><button><a href="./one+day+challenge">1-Day Challenge</a></button></li>
+  <li id="2-day-challenge"><button><a href="./two+day+challenge">2-Day Challenge</a></button></li>
+  <li id="show-all"><button><a href="./all+sites">Explore All Sites</a></button></li>
+  <li id="geolocation"><button><a href="./near+me">Explore Sites Near Me</a></button></li>
+</ul>
+
+<section id="list-page">
+  <ul id="created-list">Created List<ul>
+  <button id="see-map"><a href="./map-view">See Map</a></button>
+  <button id="create-new-list"><a href="./create-new+list">Create New List</a></button>
+</section>
+
+<section id="map-view">
+  <div id="map-1-day-challenge"></div>
+
+  <div id="map-2-day-challenge"></div>
+
+  <div id="map-all-sites"></div>
+
+  <div id="map-sites-based-on-current-location"></div>
+
+  <button id="back-to-list"><a href="./list+view">Back to List</a></button>
+</section>
+
+<section id="about">
+  <div id="team-info">Team info placeholder</div>
+</about>
+
+</main>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqDawTWjuMKPStGhOectV2wZESIrHLUo&v=3.exp&libraries=visualization"></script>
+    <script src="vendor/scripts/jquery-2.1.4.js"></script>
+    <script src="vendor/scripts/handlebars.js"></script>
+    <script src="scripts/models/map.js"></script>
+    <script src="scripts/controllers/homeController.js"></script>
+    <script src="scripts/controllers/aboutController.js"></script>
+    <script src="scripts/controllers/registerFormController.js"></script>
+    <script src="vendor/scripts/page.js"></script>
+    <script src="scripts/controllers/routes.js"></script>
+  </body>
+<footer>
+</footer>
+</html>
