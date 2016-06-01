@@ -19,7 +19,7 @@
 
 <section id="home-page">
   <ul>
-    <li><a href="./signup">Sign Up</a></li>
+    <li><a href="./register">Register</a></li>
     <li><a href="./signin">Sign In</a></li>
   </ul>
 </section>
@@ -35,45 +35,50 @@
      <input id="register" type="submit" name="submit" value="submit">
      <input id="sign-in" type="submit" name="sign-in" value="signin">
    </form>
+   <button><a href="./new+list">Create List of Sites to Visit</a><button>
 </section>
 
-<ul id="create-new-list">Create your list:
-  <li id="1-day-challenge"><button><a href="./one+day+challenge">1-Day Challenge</a></button></li>
-  <li id="2-day-challenge"><button><a href="./two+day+challenge">2-Day Challenge</a></button></li>
+<ul id="new-list">Create your list:
+  <li id="one-day-challenge"><button><a href="./one+day">1-Day Challenge</a></button></li>
+  <li id="two-day-challenge"><button><a href="./two+day">2-Day Challenge</a></button></li>
   <li id="show-all"><button><a href="./all+sites">Explore All Sites</a></button></li>
   <li id="geolocation"><button><a href="./near+me">Explore Sites Near Me</a></button></li>
 </ul>
 
-<section id="list-page">
-  <ul id="created-list">Created List<ul>
-  <button id="see-map"><a href="./map-view">See Map</a></button>
-  <button id="create-new-list"><a href="./create-new+list">Create New List</a></button>
+<section id="list-view">
+  <ul id="created-list">Created List</ul>
+  <!-- <button id="see-map"><a href="./map+view">See Map</a></button> -->
+  <button id="see-map">See Map</button>
+  <button id="create-new-list"><a href="./new+list">Create New List</a></button>
 </section>
 
 <section id="map-view">
-  <div id="map-1-day-challenge"></div>
-
-  <div id="map-2-day-challenge"></div>
-
-  <div id="map-all-sites"></div>
-
-  <div id="map-sites-based-on-current-location"></div>
-
-  <button id="back-to-list"><a href="./list+view">Back to List</a></button>
+  <button id="back-to-list">Back to List</button>
+  <div id="map"></div>
 </section>
 
 <section id="about">
   <div id="team-info">Team info placeholder</div>
-</about>
+</section>
 
 </main>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqDawTWjuMKPStGhOectV2wZESIrHLUo&v=3.exp&libraries=visualization"></script>
     <script src="vendor/scripts/jquery-2.1.4.js"></script>
     <script src="vendor/scripts/handlebars.js"></script>
-    <script src="scripts/models/map.js"></script>
+
+    <script src="scripts/models/onMap.js"></script>
+    <script src="scripts/models/locations.js"></script>
+
+    <script src="scripts/views/listView.js"></script>
+    <script src="scripts/views/mapView.js"></script>
+
     <script src="scripts/controllers/homeController.js"></script>
     <script src="scripts/controllers/aboutController.js"></script>
-    <script src="scripts/controllers/registerFormController.js"></script>
+    <script src="scripts/controllers/registerController.js"></script>
+    <script src="scripts/controllers/signinController.js"></script>
+    <script src="scripts/controllers/createListController.js"></script>
+    <script src="scripts/controllers/listController.js"></script>
+
     <script src="vendor/scripts/page.js"></script>
     <script src="scripts/controllers/routes.js"></script>
   </body>
