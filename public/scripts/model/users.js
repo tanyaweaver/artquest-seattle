@@ -18,13 +18,14 @@ $('#register').on('click', function() {
 
 $('#sign-in-button').on('click', function() {
   console.log('sign-in Button clicked');
-  artquestUser.signIn();
+  userSignIn();
 });
 
 $('#sign-out-button').on('click', function() {
   console.log('sign-Out Button clicked');
   artquestUser.signOut();
 });
+
 
 User.prototype.register = function() {
   // debugger;
@@ -39,8 +40,16 @@ User.prototype.register = function() {
     // debugger;
   });
   // debugger;
-
 };
+
+
+userSignIn = function() {
+  console.log('user sign in');
+  var email = $('#emailInput').val();
+  var password = $('#passwordInput').val();
+  var test = firebase.auth().signInWithEmailAndPassword(email, password);
+};
+
 User.prototype.signIn = function() {
   console.log('user sign in');
   var email = $('#emailInput').val();

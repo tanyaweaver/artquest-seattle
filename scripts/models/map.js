@@ -56,6 +56,7 @@
     //   google.maps.event.removeListener(boundsListener);
     // });
   }
+  
   //detectiong geolocation on pressing button <Use My Geolocation>
   function showMyGeolocation() {
     //override our map zoom level once our fitBounds function runs (make sure it only runs //once)
