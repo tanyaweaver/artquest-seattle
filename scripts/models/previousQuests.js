@@ -1,7 +1,7 @@
 (function(module) {
-  var Quest = function(opts) {
-    this.type = 'challenge';
-    this.date = new Date();
+  var Quest = function(createdOn, type, opts) {
+    this.type = type;
+    this.date = createdOn;
     this.list = opts;
   };
   Quest.all = [];

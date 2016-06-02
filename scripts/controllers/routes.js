@@ -9,4 +9,5 @@ page('/all+sites', listController.loadAllSites, listController.index);
 page('/near+me', listController.loadSitesNearMe, listController.index);
 
 page('/new+list', createListController.index);
+
 page();

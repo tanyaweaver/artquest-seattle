@@ -1,19 +1,18 @@
 (function(module) {
   var previousQuestsView = {};
-  previousQuestsView.renderQuests = function(getArray) {
-    getArray();
-    debugger;
-    console.log('Quest.all after calling getArray ' + Quest.all.length);
-    // console.log('Quest.all.length = ' + artquestUser.getUserQuests().length);
-    if(Quest.all.length !== 0) {
-      console.log('Quest.all.length!=0');
-      $('#previous-quests > li').remove();
-      var template = Handlebars.compile($('#render-existing-quests-from-firebase').html());
-      Quest.all.forEach(function(quest) {
-        $('#previous-quests').append(template(quest));
+  previousQuestsView.clickListeners = function() {
+    $('#previous-quests').delegate('li', 'click', function() {
+      var i = $('#previous-quests > li').index(this);
+      console.log(i);
+      // $(this).addClass('current');
+      mapView.renderMap(Quest.all[i].list);
+      var template = Handlebars.compile($('#render-list-for-quest').html());
+      console.log(Quest.all[i].list);
+      Quest.all[i].list.forEach(function(location) {
+        $('#' + i + ' > ul').append(template(location));
+        console.log('ha');
       });
-    }
-    console.log('end of render function');
+    });
   };
   module.previousQuestsView = previousQuestsView;
 })(window);

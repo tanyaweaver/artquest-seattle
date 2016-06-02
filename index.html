@@ -9,7 +9,11 @@
       <li>{{title}}</li><input type="checkbox">
 
   <script id="render-existing-quests-from-firebase" type="text/x-handlebars-template">
-    <li><a href="{{}}">{{date}} {{type}}</a></li>
+    <li id="{{index}}">{{type}} created on {{date}}<button id="{{index}}">see list</button>
+      <ul id="list-quest"></ul></li>
+  </script>
+  <script id="render-list-for-quest" type="text/x-handlebars-template">
+    <li>{{title}}</li>
   </script>
   
 </head>
@@ -46,7 +50,7 @@
 
        </form>
        <button><a href="./new+list">Create List of Sites to Visit</a></button>
-        <ul id="previous-quests">Your previous art quests:
+        <ol id="previous-quests">Your previous art quests:
           <li>You don't have any quests yet</li>
         </ul>
     </section>

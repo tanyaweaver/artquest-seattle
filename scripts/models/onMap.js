@@ -26,7 +26,7 @@
     var currentLocation = map.getCenter();
     bounds.extend(currentLocation);
     for(var i = 0; i < locationsArray.length; i++) {
-      var position = new google.maps.LatLng(locationsArray[i][1], locationsArray[i][2]);
+      var position = new google.maps.LatLng(locationsArray[i].latitude, locationsArray[i].longitude);
       bounds.extend(position);
       marker = new google.maps.Marker({
         position: position,
@@ -36,7 +36,7 @@
       //each marker has an info window on click, displaying title
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infoWindow.setContent(locationsArray[i][0]);
+          infoWindow.setContent(locationsArray[i].title);
           infoWindow.open(map, marker);
         };
       })(marker, i));
