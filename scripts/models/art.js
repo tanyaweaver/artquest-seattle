@@ -3,8 +3,8 @@
   artList.all = [];
 
   artList.requestList = function(callback) {
-    debugger;
     if (artList.all.length === 0 ) {
+      console.log('Loading data from seattle.gov');
       $.ajax({
         url: 'https://data.seattle.gov/resource/249z-59hj',
         type: 'GET',

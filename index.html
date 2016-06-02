@@ -6,6 +6,18 @@
   <link rel="stylesheet" href="styles/sass/style.css">
   <link href="https://fonts.googleapis.com/css?family=Kalam|Pacifico|Kaushan+Script|Pinyon+Script|Alex+Brush|Homemade+Apple|Parisienne" rel="stylesheet" type="text/css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script id="artlist-template" type="text/x-handlebars-template">
+      <li>{{title}}</li><input type="checkbox">
+  </script>
+  <script id="render-existing-quests-from-firebase" type="text/x-handlebars-template">
+    <li id="{{index}}">{{type}} created on {{date}}<button id="{{index}}">see list</button>
+      <ul id="list-quest"></ul></li>
+  </script>
+  <script id="render-list-for-quest" type="text/x-handlebars-template">
+    <li>{{title}}</li>
+  </script>
+
 </head>
 
 <body>
@@ -20,8 +32,10 @@
           <li><a href="./signin">Sign In</a></li>
         </ul>
       </nav>
+
 </header>
 <main>
+
 <section id="all-tabs-except-map">
     <section id="home-page">
       <img src="images/head.jpg"/>
@@ -41,6 +55,11 @@
 
        </form>
        <button><a href="./new+list">Create List of Sites to Visit</a></button>
+
+        <ol id="previous-quests">Your previous art quests:
+          <li>You don't have any quests yet</li>
+        </ul>
+
     </section>
 
     <ul id="new-list">Create your list:
@@ -51,7 +70,7 @@
     </ul>
 
     <section id="list-view">
-      <ul id="created-list">Created List</ul>
+      <ul id="created-list"> </ul>
       <!-- <button id="see-map">See Map</button> -->
       <button id="create-new-list"><a href="./new+list">Create New List</a></button>
     </section>
@@ -60,12 +79,13 @@
       <div id="team-info">Team info placeholder</div>
     </section>
     <!-- <button id="back-to-list">Back to List</button> -->
-</section>
 
+  </section>
 
-<section id="map-view">
+  <section id="map-view">
     <div id="map"></div>
-</section>
+  </section>
+
 
 </main>
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
@@ -85,9 +105,12 @@
 
     <script src="scripts/models/onMap.js"></script>
     <script src="scripts/models/locations.js"></script>
+    <script src="scripts/models/previousQuests.js"></script>
+
 
     <script src="scripts/views/listView.js"></script>
     <script src="scripts/views/mapView.js"></script>
+    <script src="scripts/views/previousQuestsView.js"></script>
 
     <script src="scripts/controllers/homeController.js"></script>
     <script src="scripts/controllers/aboutController.js"></script>
@@ -98,6 +121,10 @@
 
     <script src="vendor/scripts/page.js"></script>
     <script src="scripts/controllers/routes.js"></script>
+
+    <script src="scripts/models/dms.js"></script>
+    <script src="scripts/models/latlon-spherical.js"></script>
+
     <script src="scripts/models/art.js"></script>
     <script src="scripts/models/users.js"></script>
   </body>
