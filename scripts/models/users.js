@@ -121,10 +121,7 @@ User.prototype.getUserQuests = function () {
           console.log('index of quest ' + quest.index);
           $('#previous-quests').append(template(quest));
         });
-        // previousQuestsView.clickListeners();
-        for(var i = 0; i < Quest.all.length; i++) {
-          page('/quests/' + i, listController.loadQuest(Quest.all[i].list));
-        }
+        previousQuestsView.clickListeners();
         // for(var i = 0; i < Quest.all.length; i++) {
         //   console.log(Quest.all[i]);
           // $('button').on('click', function() {
@@ -132,9 +129,6 @@ User.prototype.getUserQuests = function () {
             // Quest.all[i].list.forEach(function(location) {
             //   $('#list-quest').append(template(location));
             // });
-          //   onMap.deleteMarkers();
-          //   console.log(Quest.all[i]);
-          //   mapView.renderMap(Quest.all[i].list);
           // });
         // }
       }

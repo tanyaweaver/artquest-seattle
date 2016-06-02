@@ -14,7 +14,7 @@
 
   listController.loadQuest = function(locations) {
     console.log('about to render map for quest');
-    deleteMarkers();
+    onMap.deleteMarkers();
     mapView.renderMap(locations);
   };
 
