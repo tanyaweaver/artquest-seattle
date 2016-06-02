@@ -7,7 +7,9 @@
     mapView.renderMap(ctx.locations);
     listView.index();
     console.log(Quest.all + ' - Quest.all before adding new list');
-    Quest.all.push(new Quest(ctx.createdOn, ctx.typeChallenge, ctx.locations));
+    var newQuest = new Quest(ctx.createdOn, ctx.typeChallenge, ctx.locations);
+    console.log(newQuest);
+    Quest.all.push(newQuest);
     console.log(Quest.all + ' - Quest.all after adding new list');
     artquestUser.saveNewQuestToFb(Quest.all);
   };
@@ -19,7 +21,8 @@
   };
 
   listController.loadOneDayChallenge = function(ctx,next) {
-    ctx.locations = Locations.locations1;
+    ctx.locations = Locations.getRandomList(10);
+    // ctx.locations = Locations.locations1;
     ctx.typeChallenge = '1-Day challenge';
     var newDate = new Date();
     var createdOn = (newDate.getMonth() + 1) + '/' + newDate.getDate() + '/' + newDate.getFullYear();
@@ -29,7 +32,12 @@
   };
 
   listController.loadTwoDayChallenge = function(ctx,next) {
-    ctx.locations = Locations.locations2;
+    ctx.locations = Locations.getRandomList(20);
+    ctx.typeChallenge = '2-Day challenge';
+    var newDate = new Date();
+    var createdOn = (newDate.getMonth() + 1) + '/' + newDate.getDate() + '/' + newDate.getFullYear();
+    ctx.createdOn = createdOn;
+    console.log('new quest created on: ' + ctx.createdOn);
     next();
   };
 

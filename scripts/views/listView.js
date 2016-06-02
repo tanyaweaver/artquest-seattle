@@ -16,8 +16,8 @@
     $('#created-list > *').remove();
     array.forEach(function(item) {
       $('#created-list').append(template(item));
-    })
-  }
+    });
+  };
 
   listView.generateNearMeSection = function() {
     $('#created-list > *').remove();

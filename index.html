@@ -2,14 +2,16 @@
 <html>
 <head>
   <title>Artquest Seattle</title>
-  <link rel="stylesheet" href="styles/map.css">
+  <link rel="stylesheet" href="styles/sass/map.css">
+  <link rel="stylesheet" href="styles/sass/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Kalam|Pacifico|Kaushan+Script|Pinyon+Script|Alex+Brush|Homemade+Apple|Parisienne" rel="stylesheet" type="text/css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <script id="artlist-template" type="text/x-handlebars-template">
       <li>{{title}}</li><input type="checkbox">
   </script>
   <script id="render-existing-quests-from-firebase" type="text/x-handlebars-template">
-    <li id="{{index}}">{{type}} created on {{date}}<button id="{{index}}">see list</button>
+    <li id="{{index}}">{{type}} created on {{date}}<button id="see-list">see list</button><button id="hide-list">hide list</button>
       <ul id="list-quest"></ul></li>
   </script>
   <script id="render-list-for-quest" type="text/x-handlebars-template">
@@ -19,23 +21,25 @@
 </head>
 
 <body>
-<header>
-  <ul id="top-nav">
-    <li>Logo</li>
-    <li><a href="./">Home</a></li>
-    <li><a href="./about">About</a></li>
-    <!-- <button id="locate-button" type="button" name="List Near Me">List Near Me</button> -->
-  </ul>
-</header>
 
+  <header>
+    <a id="logo">Artquest &nbsp; Seattle</a>
+      <nav>
+        <a href="#" id="menu-icon"></a>
+        <ul>
+          <li><a href="./">Home</a></li>
+          <li><a href="./about">About</a></li>
+          <li><a href="./register">Register</a></li>
+          <li><a href="./signin">Sign In</a></li>
+        </ul>
+      </nav>
+
+</header>
 <main>
 
 <section id="all-tabs-except-map">
     <section id="home-page">
-      <ul>
-        <li><a href="./register">Register</a></li>
-        <li><a href="./signin">Sign In</a></li>
-      </ul>
+      <img src="images/head.jpg"/>
     </section>
 
     <section id="register-form">
@@ -51,18 +55,38 @@
          <input id="sign-out-button" type="submit" name="sign-out" value="Sign Out">
 
        </form>
+       <!-- <a href="./registredUser">skip register</a> -->
        <button><a href="./new+list">Create List of Sites to Visit</a></button>
-        <ol id="previous-quests">Your previous art quests:
+        <ul id="previous-quests">Your previous art quests:
+
           <li>You don't have any quests yet</li>
         </ul>
+
     </section>
 
+<<<<<<< HEAD
       <ul id="new-list">Create your list:
         <li id="one-day-challenge"><button><a href="./one+day">1-Day Challenge</a></button></li>
         <li id="two-day-challenge"><button><a href="./two+day">2-Day Challenge</a></button></li>
         <li id="show-all"><button><a href="./all+sites">Explore All Sites</a></button></li>
         <li id="geolocation"><button><a href="./near+me">Explore Sites Near Me</a></button></li>
       </ul>
+=======
+    <!-- <section id="registered-signedin">
+      <button><a href="./new+list">Create List of Sites to Visit</a></button>
+       <ul id="previous-quests">Your previous art quests:
+         <li>You don't have any quests yet</li>
+       </ul>
+    </section> -->
+
+    <ul id="new-list">Create your list:
+      <li id="one-day-challenge"><button><a href="./one+day">1-Day Challenge</a></button></li>
+      <li id="two-day-challenge"><button><a href="./two+day">2-Day Challenge</a></button></li>
+      <li id="show-all"><button><a href="./all+sites">Explore All Sites</a></button></li>
+      <li id="geolocation"><button><a href="./near+me">Explore Sites Near Me</a></button></li>
+      <button id="locate-button" type="button" name="List Near Me">List Near Me</button>
+    </ul>
+>>>>>>> master
 
     <section id="list-view">
       <ul id="created-list"> </ul>

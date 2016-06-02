@@ -149,7 +149,7 @@ User.prototype.getUserData = function () {
     } else {
       console.log('user.artList exists in firebase DB');
       // console.log(snapshot.val().userArtList);
-      artquestUser.userArtList = snapshot.val().userArtList;
+      artquestUser.userArtList = snapshot.val();
       // page('/new+list');
     }
   });
@@ -192,6 +192,7 @@ User.prototype.getUserQuests = function () {
 };
 
 User.prototype.saveNewQuestToFb = function (allQuestsUpdatedArray) {
+  console.log(allQuestsUpdatedArray);
   // var user = firebase.auth().currentUser;
   //
   // firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
@@ -244,7 +245,7 @@ getMyLocation = function() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(locationSuccess);
   } else {
-    console.log("Geolocation is not supported by this browser.");
+    console.log('Geolocation is not supported by this browser.');
   }
 };
 
@@ -265,7 +266,7 @@ function codeAddress(address) {
       console.log(latlng.lat(), latlng.lng());
       return([latlng.lat(), latlng.lng()]);
     } else {
-    alert("Geocode was not successful for the following reason: " + status);
+      alert('Geocode was not successful for the following reason: ' + status);
     }
   });
 }
@@ -294,12 +295,11 @@ function sitesNearAddress2(distanceFilter, address){
       return nearMe;
 
     } else {
-    alert("Geocode was not successful for the following reason: " + status);
+      alert('Geocode was not successful for the following reason: ' + status);
     }
   });
 
 }
-
 
 function sitesNearAddress(distanceFilter, address) {
   var latlng = codeAddress(address);
@@ -318,7 +318,6 @@ function sitesNearAddress(distanceFilter, address) {
   }, obj);
   return nearMe;
 };
-
 
 User.prototype.signedIn = function() {
   var user = firebase.auth().currentUser;
