@@ -2,10 +2,10 @@
   var listController = {};
 
   listController.index = function(ctx) {
-    // listView.renderList(ctx.locations);
-
+    pageView.showList();
+    listView.generateListSection(ctx.locations);
     mapView.renderMap(ctx.locations);
-    listView.index();
+    // listView.index();
     console.log(Quest.all + ' - Quest.all before adding new list');
     var newQuest = new Quest(ctx.createdOn, ctx.typeChallenge, ctx.locations);
     console.log(newQuest);
@@ -15,7 +15,8 @@
   };
 
   listController.loadQuest = function(locations) {
-    console.log('about to render map for quest');
+    pageView.showList();
+    listView.generateListSection(locations);
     onMap.deleteMarkers();
     mapView.renderMap(locations);
   };

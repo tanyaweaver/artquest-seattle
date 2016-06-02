@@ -1,8 +1,46 @@
 #map {
   width: 70%;
   margin: 0 auto;
-  padding-top: 25%;
+  padding-top: 5%;
   padding-bottom: 25%;
   margin-top: 5%;
   border: 5px solid black;
+}
+
+#map-view {
+  clear:both;
+  margin-top: 0;
+}
+
+#all-tabs-except-map {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+#registered-signedin {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#registered-signedin li {
+  float: left;
+  clear: left;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#all-my-quests {
+  clear:both;
+  display: block;
+}
+
+#new-list {
+  text-align: center;
+}
+
+li {
+
 }

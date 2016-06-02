@@ -25,6 +25,7 @@
 
   };
 
+
   listView.generateListSection = function (array) {
     var template = Handlebars.compile($('#artlist-template').html());
     $('#created-list > *').remove();
