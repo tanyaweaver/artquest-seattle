@@ -7,6 +7,9 @@
 
   listView.generateListSection = function (array) {
     var template = Handlebars.compile($('#artlist-template').html());
+    debugger;
+    $('#created-list > *').remove();
+    debugger;
     array.forEach(function(item) {
       $('#created-list').append(template(item));
     })
