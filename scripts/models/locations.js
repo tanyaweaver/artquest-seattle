@@ -14,9 +14,10 @@ Locations.getRandomList = function(questNumber) {
       randomNumbers.push(number);
     }
   }
-  for (i=0; i<randomNumbers.length; i++) {
-    randomQuest.push( artquestUser.userArtList[randomNumbers[i]]);
-  }
+  randomNumbers.forEach(function(element) {
+    randomQuest.push(artquestUser.userArtList[element]);
+  });
+  console.log(randomNumbers);
   return randomQuest;
 }
 
