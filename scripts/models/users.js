@@ -104,6 +104,7 @@ User.prototype.getUserQuests = function () {
   var user = firebase.auth().currentUser;
 
   firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
+    console.log('inside of User.prototype.getUserQuests');
     console.log(snapshot.val().userQuests);
     if (!snapshot.val().userQuests) {
       console.log('no quests in fb');
@@ -111,12 +112,13 @@ User.prototype.getUserQuests = function () {
       //   userQuests: Quest.all
       // });
       Quest.all = [];
-      // return Quest.all;
+      return Quest.all;
     } else {
       console.log('quest list exists in firebase DB');
-      // console.log(snapshot.val().userArtList);
+      console.log('snapshot.val().userQuests: ' + snapshot.val().userQuests);
       Quest.all = snapshot.val().userQuests;
-      // return Quest.all;
+      console.log(Quest.all);
+      return Quest.all;
     }
   });
 };
