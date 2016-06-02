@@ -14,12 +14,13 @@
       <li>{{title}}</li><input type="checkbox">
   </script>
   <script id="render-existing-quests-from-firebase" type="text/x-handlebars-template">
-    <li id="{{index}}">{{type}} created on {{date}}<button id="see-list">see list</button><button id="hide-list">hide list</button>
-      <ul id="list-quest"></ul></li>
+    <li id="{{index}}">{{type}} created on {{date}}<button>see list</button>
+      <ul id="list-quest"></ul>
+    </li>
   </script>
-  <script id="render-list-for-quest" type="text/x-handlebars-template">
+  <!-- <script id="render-list-for-quest" type="text/x-handlebars-template">
     <li>{{title}}</li>
-  </script>
+  </script> -->
 
 </head>
 
@@ -60,38 +61,28 @@
          <input id="register-button" type="submit" name="submit" value="Register">
          <input id="sign-in-button" type="submit" name="sign-in" value="Sign In">
          <input id="sign-out-button" type="submit" name="sign-out" value="Sign Out">
-
        </form>
-       <!-- <a href="./registredUser">skip register</a> -->
-       <button><a href="./new+list">Create List of Sites to Visit</a></button>
-        <ul id="previous-quests">Your previous art quests:
+     </section>
 
-          <li>You don't have any quests yet</li>
-        </ul>
+     <section id="registered-signedin">
+        <div id="create-new-list">
+             <button><a href="./new+list">Create List of Sites to Visit</a></button>
+             <ul id="new-list">
+               <li id="one-day-challenge"><button><a href="./one+day">1-Day Challenge</a></button></li>
+               <li id="two-day-challenge"><button><a href="./two+day">2-Day Challenge</a></button></li>
+             </ul>
+         </div>
 
-    </section>
+         <div id="list-view">
+              <ul id="created-list"> </ul>
+         </div>
 
-
-    <!-- <section id="registered-signedin">
-      <button><a href="./new+list">Create List of Sites to Visit</a></button>
-       <ul id="previous-quests">Your previous art quests:
-         <li>You don't have any quests yet</li>
-       </ul>
-    </section> -->
-
-    <ul id="new-list">Create your list:
-      <li id="one-day-challenge"><button><a href="./one+day">1-Day Challenge</a></button></li>
-      <li id="two-day-challenge"><button><a href="./two+day">2-Day Challenge</a></button></li>
-      <li id="show-all"><button><a href="./all+sites">Explore All Sites</a></button></li>
-      <li id="geolocation"><button><a href="./near+me">Explore Sites Near Me</a></button></li>
-      <button id="locate-button" type="button" name="List Near Me">List Near Me</button>
-    </ul>
-
-
-    <section id="list-view">
-      <ul id="created-list"> </ul>
-      <!-- <button id="see-map">See Map</button> -->
-      <button id="create-new-list"><a href="./new+list">Create New List</a></button>
+         <div id="all-my-quests">
+              <button><a href="./see+all+quests">See My Previous Quests</a></button>
+              <ul id="previous-quests">
+                <li>You don't have any quests yet</li>
+              </ul>
+        </div>
     </section>
 
     <section id="near-me-form">
@@ -109,7 +100,6 @@
     <section id="about">
       <div id="team-info">Team info placeholder</div>
     </section>
-    <!-- <button id="back-to-list">Back to List</button> -->
 
   </section>
 
@@ -141,13 +131,13 @@
 
     <script src="scripts/views/listView.js"></script>
     <script src="scripts/views/mapView.js"></script>
+    <script src="scripts/views/pageView.js"></script>
     <script src="scripts/views/previousQuestsView.js"></script>
 
     <script src="scripts/controllers/homeController.js"></script>
     <script src="scripts/controllers/aboutController.js"></script>
     <script src="scripts/controllers/registerController.js"></script>
     <script src="scripts/controllers/signinController.js"></script>
-    <script src="scripts/controllers/createListController.js"></script>
     <script src="scripts/controllers/listController.js"></script>
 
     <script src="vendor/scripts/page.js"></script>
