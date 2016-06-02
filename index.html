@@ -4,6 +4,18 @@
   <title>Artquest Seattle</title>
   <link rel="stylesheet" href="styles/map.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script id="artlist-template" type="text/x-handlebars-template">
+      <li>{{title}}</li><input type="checkbox">
+
+  <script id="render-existing-quests-from-firebase" type="text/x-handlebars-template">
+    <li id="{{index}}">{{type}} created on {{date}}<button id="{{index}}">see list</button>
+      <ul id="list-quest"></ul></li>
+  </script>
+  <script id="render-list-for-quest" type="text/x-handlebars-template">
+    <li>{{title}}</li>
+  </script>
+
 </head>
 
 <body>
@@ -18,51 +30,57 @@
 
 <main>
 
-<section id="home-page">
-  <ul>
-    <li><a href="./register">Register</a></li>
-    <li><a href="./signin">Sign In</a></li>
-  </ul>
-</section>
+<section id="all-tabs-except-map">
+    <section id="home-page">
+      <ul>
+        <li><a href="./register">Register</a></li>
+        <li><a href="./signin">Sign In</a></li>
+      </ul>
+    </section>
 
-<section id="register-form">
-   <form>
-     <label for="nameInput">Your Name</label>
-     <input id="nameInput" type="text" placeholder="Screen Name">
-     <label for="emailInput">Your Email</label>
-     <input id="emailInput" type="email" placeholder="you@email.com">
-     <label for="passwordInput">Your Password</label>
-     <input id="passwordInput" type="text" placeholder="password">
-     <input id="register-button" type="submit" name="submit" value="Register">
-     <input id="sign-in-button" type="submit" name="sign-in" value="Sign In">
-     <input id="sign-out-button" type="submit" name="sign-out" value="Sign Out">
+    <section id="register-form">
+       <form>
+         <label for="nameInput">Your Name</label>
+         <input id="nameInput" type="text" placeholder="Screen Name">
+         <label for="emailInput">Your Email</label>
+         <input id="emailInput" type="email" placeholder="you@email.com">
+         <label for="passwordInput">Your Password</label>
+         <input id="passwordInput" type="text" placeholder="password">
+         <input id="register-button" type="submit" name="submit" value="Register">
+         <input id="sign-in-button" type="submit" name="sign-in" value="Sign In">
+         <input id="sign-out-button" type="submit" name="sign-out" value="Sign Out">
 
-   </form>
-   <button><a href="./new+list">Create List of Sites to Visit</a><button>
-</section>
+       </form>
+       <button><a href="./new+list">Create List of Sites to Visit</a></button>
+        <ol id="previous-quests">Your previous art quests:
+          <li>You don't have any quests yet</li>
+        </ul>
+    </section>
 
-<ul id="new-list">Create your list:
-  <li id="one-day-challenge"><button><a href="./one+day">1-Day Challenge</a></button></li>
-  <li id="two-day-challenge"><button><a href="./two+day">2-Day Challenge</a></button></li>
-  <li id="show-all"><button><a href="./all+sites">Explore All Sites</a></button></li>
-  <li id="geolocation"><button><a href="./near+me">Explore Sites Near Me</a></button></li>
-</ul>
+    <ul id="new-list">Create your list:
+      <li id="one-day-challenge"><button><a href="./one+day">1-Day Challenge</a></button></li>
+      <li id="two-day-challenge"><button><a href="./two+day">2-Day Challenge</a></button></li>
+      <li id="show-all"><button><a href="./all+sites">Explore All Sites</a></button></li>
+      <li id="geolocation"><button><a href="./near+me">Explore Sites Near Me</a></button></li>
+    </ul>
 
-<section id="list-view">
-  <ul id="created-list">Created List</ul>
-  <!-- <button id="see-map"><a href="./map+view">See Map</a></button> -->
-  <button id="see-map">See Map</button>
-  <button id="create-new-list"><a href="./new+list">Create New List</a></button>
-</section>
+    <section id="list-view">
+      <ul id="created-list"> </ul>
+      <!-- <button id="see-map">See Map</button> -->
+      <button id="create-new-list"><a href="./new+list">Create New List</a></button>
+    </section>
 
-<section id="map-view">
-  <button id="back-to-list">Back to List</button>
-  <div id="map"></div>
-</section>
+    <section id="about">
+      <div id="team-info">Team info placeholder</div>
+    </section>
+    <!-- <button id="back-to-list">Back to List</button> -->
 
-<section id="about">
-  <div id="team-info">Team info placeholder</div>
-</section>
+  </section>
+
+  <section id="map-view">
+    <div id="map"></div>
+  </section>
+
 
 </main>
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
@@ -82,9 +100,12 @@
 
     <script src="scripts/models/onMap.js"></script>
     <script src="scripts/models/locations.js"></script>
+    <script src="scripts/models/previousQuests.js"></script>
+
 
     <script src="scripts/views/listView.js"></script>
     <script src="scripts/views/mapView.js"></script>
+    <script src="scripts/views/previousQuestsView.js"></script>
 
     <script src="scripts/controllers/homeController.js"></script>
     <script src="scripts/controllers/aboutController.js"></script>

@@ -155,8 +155,67 @@ User.prototype.getUserData = function () {
   });
 };
 
+User.prototype.getUserQuests = function () {
+  var user = firebase.auth().currentUser;
+
+  firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
+    console.log('inside of User.prototype.getUserQuests');
+    console.log(snapshot.val().userQuests);
+    if (!snapshot.val().userQuests) {
+      console.log('no quests in fb');
+      Quest.all = [];
+    } else {
+      console.log('quest list exists in firebase DB');
+      Quest.all = snapshot.val().userQuests;
+      if(Quest.all.length !== 0) {
+        console.log('Quest.all.length!=0');
+        $('#previous-quests > li').remove();
+        var template = Handlebars.compile($('#render-existing-quests-from-firebase').html());
+        Quest.all.forEach(function(quest) {
+          quest.index = Quest.all.indexOf(quest);
+          console.log('index of quest ' + quest.index);
+          $('#previous-quests').append(template(quest));
+        });
+        previousQuestsView.clickListeners();
+        // for(var i = 0; i < Quest.all.length; i++) {
+        //   console.log(Quest.all[i]);
+          // $('button').on('click', function() {
+            // var template = Handlebars.compile($('#render-lis-for-quest').html());
+            // Quest.all[i].list.forEach(function(location) {
+            //   $('#list-quest').append(template(location));
+            // });
+          // });
+        // }
+      }
+    }
+  });
+};
+
+User.prototype.saveNewQuestToFb = function (allQuestsUpdatedArray) {
+  // var user = firebase.auth().currentUser;
+  //
+  // firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
+  //   console.log(snapshot.val().userQuests);
+  //   if (!snapshot.val().userQuests) {
+  //     console.log('no quests in fb');
+  var user = firebase.auth().currentUser;
+  firebase.database().ref('users/' + user.uid).set({
+    userQuests: allQuestsUpdatedArray
+  });
+  //     return Quest.all = [];
+  //   } else {
+  //     console.log('quest list exists in firebase DB');
+  //     // console.log(snapshot.val().userArtList);
+  //     return Quest.all = snapshot.val().userQuests;
+  //   }
+  // });
+  console.log('new quest is saved');
+  // console.log(snapshot.val().userQuests);
+};
+
 distanceBetweenLocations = function (lat1, lon1, lat2, lon2) {
   // console.log(lat1,lon1, lat2,lon2);
+
   var φ1 = lat1.toRadians(), φ2 = lat2.toRadians(), Δλ = (lon2 - lon1).toRadians(), R = 6371e3; // gives d in metres
   var d = Math.acos( Math.sin(φ1) * Math.sin(φ2) + Math.cos(φ1) * Math.cos(φ2) * Math.cos(Δλ) ) * R;
   // console.log('Distance: ', d);

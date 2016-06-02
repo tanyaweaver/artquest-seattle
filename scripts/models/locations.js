@@ -1,10 +1,41 @@
 (function(module) {
-  var Locations = {};
+var Locations = {};
+
+Locations.getRandomList = function(questNumber) {
+  var randomNumbers = [];
+  var randomQuest = [];
+
+  function selector() {
+    return Math.floor(Math.random() * artquestUser.userArtList.length)
+  }
+  while (randomNumbers.length < questNumber) {
+    var number = selector();
+    if (randomNumbers.indexOf(number) === -1) {
+      randomNumbers.push(number);
+    }
+  }
+  randomNumbers.forEach(function(element) {
+    randomQuest.push(artquestUser.userArtList[element]);
+  });
+  return randomQuest;
+}
 
   Locations.locations1 = [
-      ['Mcgilvra\'s Farm', 47.635467, -122.277917],
-      ['Signs of Life', 47.6851, -122.337583],
-      ['Baby Elephant', 47.669067, -122.34845],
+    {
+      title: 'Mcgilvra\'s Farm',
+      latitude: 47.635467,
+      longitude: -122.277917
+    },
+    {
+      title: 'Signs of Life',
+      latitude: 47.6851,
+      longitude: -122.337583
+    },
+    {
+      title: 'Baby Elephant',
+      latitude: 47.669067,
+      longitude: -122.34845
+    }
   ];
 
   Locations.locations2 = [
