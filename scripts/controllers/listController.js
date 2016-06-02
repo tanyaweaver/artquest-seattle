@@ -1,6 +1,11 @@
 (function(module) {
   var listController = {};
 
+  // listController.clearAll = function(ctx, next) {
+  //   onMap.clearMarkers();
+  //   next();
+  // };
+
   listController.index = function(ctx) {
     // listView.renderList(ctx.locations);
     mapView.renderMap(ctx.locations);
