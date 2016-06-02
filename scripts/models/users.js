@@ -124,6 +124,7 @@ getFBData = function(){
     }
 
   });
+  // return tempList;
 };
 
 User.prototype.getUserData = function () {
@@ -149,7 +150,7 @@ User.prototype.getUserData = function () {
     } else {
       console.log('user.artList exists in firebase DB');
       // console.log(snapshot.val().userArtList);
-      artquestUser.userArtList = snapshot.val().userArtList;
+      artquestUser.userArtList = snapshot.val();
       // page('/new+list');
     }
   });
