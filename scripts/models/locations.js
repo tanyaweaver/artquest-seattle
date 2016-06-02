@@ -1,5 +1,24 @@
 (function(module) {
-  var Locations = {};
+var Locations = {};
+
+Locations.getRandomList = function(questNumber) {
+  var randomNumbers = [];
+  var randomQuest = [];
+
+  function selector() {
+    return Math.floor(Math.random() * artquestUser.userArtList.length)
+  }
+  while (randomNumbers.length < questNumber) {
+    var number = selector();
+    if (randomNumbers.indexOf(number) === -1) {
+      randomNumbers.push(number);
+    }
+  }
+  for (i=0; i<randomNumbers.length; i++) {
+    randomQuest.push( artquestUser.userArtList[randomNumbers[i]]);
+  }
+  return randomQuest;
+}
 
   Locations.locations1 = [
       ['Mcgilvra\'s Farm', 47.635467, -122.277917],

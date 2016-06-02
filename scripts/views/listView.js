@@ -5,6 +5,13 @@
 
   };
 
+  listView.generateListSection = function (array) {
+    var template = Handlebars.compile($('#artlist-template').html());
+    array.forEach(function(item) {
+      $('#created-list').append(template(item));
+    })
+  }
+
   listView.index = function() {
     $('#list-view').show().siblings().hide();
     // $('#see-map').on('click', mapView.index);
