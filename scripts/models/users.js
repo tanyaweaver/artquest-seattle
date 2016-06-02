@@ -100,6 +100,57 @@ User.prototype.getUserData = function () {
   });
 };
 
+User.prototype.getUserQuests = function () {
+  var user = firebase.auth().currentUser;
+
+  firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
+    console.log('inside of User.prototype.getUserQuests');
+    console.log(snapshot.val().userQuests);
+    if (!snapshot.val().userQuests) {
+      console.log('no quests in fb');
+      // firebase.database().ref('users/' + user.uid).set({
+      //   userQuests: Quest.all
+      // });
+      Quest.all = [];
+      return Quest.all;
+    } else {
+      console.log('quest list exists in firebase DB');
+      console.log('snapshot.val().userQuests: ' + snapshot.val().userQuests);
+      Quest.all = snapshot.val().userQuests;
+      console.log(Quest.all);
+      return Quest.all;
+    }
+  });
+};
+
+User.prototype.saveNewQuestToFb = function (allQuestsUpdatedArray) {
+  // var user = firebase.auth().currentUser;
+  //
+  // firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
+  //   console.log(snapshot.val().userQuests);
+  //   if (!snapshot.val().userQuests) {
+  //     console.log('no quests in fb');
+  var user = firebase.auth().currentUser;
+  firebase.database().ref('users/' + user.uid).set({
+    userQuests: allQuestsUpdatedArray
+  });
+  //     return Quest.all = [];
+  //   } else {
+  //     console.log('quest list exists in firebase DB');
+  //     // console.log(snapshot.val().userArtList);
+  //     return Quest.all = snapshot.val().userQuests;
+  //   }
+  // });
+  console.log('new quest is saved');
+  // console.log(snapshot.val().userQuests);
+};
+
+User.prototype.checkInWithCurrentLocation = function (lat1,lon1, lat2,lon2) {
+  var φ1 = lat1.toRadians(), φ2 = lat2.toRadians(), Δλ = (lon2 - lon1).toRadians(), R = 6371e3; // gives d in metres
+  var d = Math.acos( Math.sin(φ1) * Math.sin(φ2) + Math.cos(φ1) * Math.cos(φ2) * Math.cos(Δλ) ) * R;
+  console.log('Distance: ', d);
+};
+
 User.prototype.signedIn = function() {
   var user = firebase.auth().currentUser;
   console.log(user.uid + ' signed in');

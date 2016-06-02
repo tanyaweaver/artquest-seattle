@@ -4,9 +4,14 @@
   <title>Artquest Seattle</title>
   <link rel="stylesheet" href="styles/map.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <script id="artlist-template" type="text/x-handlebars-template">
       <li>{{title}}</li><input type="checkbox">
+
+  <script id="render-existing-quests-from-firebase" type="text/x-handlebars-template">
+    <li><a href="{{}}">{{date}} {{type}}</a></li>
   </script>
+  
 </head>
 
 <body>
@@ -40,7 +45,10 @@
          <input id="sign-out-button" type="submit" name="sign-out" value="Sign Out">
 
        </form>
-       <button><a href="./new+list">Create List of Sites to Visit</a><button>
+       <button><a href="./new+list">Create List of Sites to Visit</a></button>
+        <ul id="previous-quests">Your previous art quests:
+          <li>You don't have any quests yet</li>
+        </ul>
     </section>
 
     <ul id="new-list">Create your list:
@@ -85,9 +93,12 @@
 
     <script src="scripts/models/onMap.js"></script>
     <script src="scripts/models/locations.js"></script>
+    <script src="scripts/models/previousQuests.js"></script>
+
 
     <script src="scripts/views/listView.js"></script>
     <script src="scripts/views/mapView.js"></script>
+    <script src="scripts/views/previousQuestsView.js"></script>
 
     <script src="scripts/controllers/homeController.js"></script>
     <script src="scripts/controllers/aboutController.js"></script>
@@ -98,6 +109,9 @@
 
     <script src="vendor/scripts/page.js"></script>
     <script src="scripts/controllers/routes.js"></script>
+    <script src="scripts/models/dms.js"></script>
+    <script src="scripts/models/latlon-spherical.js"></script>
+
     <script src="scripts/models/art.js"></script>
     <script src="scripts/models/users.js"></script>
   </body>

@@ -6,14 +6,18 @@
   });
 
   var infoWindow;
+  onMap.markersArray = [];
 
-  // onMap.resizeMap = function() {
-  //   google.maps.event.addDomListener(window, 'resize', function() {
-  //     var center = map.getCenter();
-  //     google.maps.event.trigger(map, 'resize');
-  //     map.setCenter(center);
-  //   });
-  // };
+  onMap.setAllMarkersOnMap = function(map) {
+    for(var i = 0; i < onMap.markersArray.length; i++) {
+      onMap.markersArray[i].setMap(map);
+    }
+  };
+
+  onMap.deleteMarkers = function() {
+    onMap.setAllMarkersOnMap(null);
+    onMap.markersArray = [];
+  };
 
   onMap.placeMarkers = function(locationsArray) {
     infoWindow = new google.maps.InfoWindow({map: map});
@@ -26,17 +30,17 @@
       bounds.extend(position);
       marker = new google.maps.Marker({
         position: position,
-        map: map,
-        title: locationsArray[i][0]
       });
-    //each marker has an info window on click, displaying title
+      onMap.markersArray.push(marker);
+
+      //each marker has an info window on click, displaying title
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
           infoWindow.setContent(locationsArray[i][0]);
           infoWindow.open(map, marker);
         };
       })(marker, i));
-    //center the map fitting all markers on the screen
+      onMap.setAllMarkersOnMap(map);
       map.fitBounds(bounds);
     }
   };

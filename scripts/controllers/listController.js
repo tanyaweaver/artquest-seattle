@@ -1,10 +1,20 @@
 (function(module) {
   var listController = {};
 
+  // listController.clearAll = function(ctx, next) {
+  //   onMap.clearMarkers();
+  //   next();
+  // };
+
   listController.index = function(ctx) {
     // listView.renderList(ctx.locations);
+
     mapView.renderMap(ctx.locations);
     listView.index();
+    console.log(Quest.all + ' - Quest.all before adding new list');
+    Quest.all.push(new Quest(ctx.locations));
+    console.log(Quest.all + ' - Quest.all after adding new list');
+    artquestUser.saveNewQuestToFb(Quest.all);
   };
 
   listController.loadOneDayChallenge = function(ctx,next) {
