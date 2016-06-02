@@ -2,26 +2,29 @@
 <html>
 <head>
   <title>Artquest Seattle</title>
-  <link rel="stylesheet" href="styles/map.css">
+  <link rel="stylesheet" href="styles/sass/map.css">
+  <link rel="stylesheet" href="styles/sass/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Kalam|Pacifico|Kaushan+Script|Pinyon+Script|Alex+Brush|Homemade+Apple|Parisienne" rel="stylesheet" type="text/css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-<header>
-  <ul id="top-nav">
-    <li>Logo</li>
-    <li><a href="./">Home</a></li>
-    <li><a href="./about">About</a></li>
-  </ul>
+  <header>
+    <a id="logo">Artquest &nbsp; Seattle</a>
+      <nav>
+        <a href="#" id="menu-icon"></a>
+        <ul>
+          <li><a href="./">Home</a></li>
+          <li><a href="./about">About</a></li>
+          <li><a href="./register">Register</a></li>
+          <li><a href="./signin">Sign In</a></li>
+        </ul>
+      </nav>
 </header>
-
 <main>
 <section id="all-tabs-except-map">
     <section id="home-page">
-      <ul>
-        <li><a href="./register">Register</a></li>
-        <li><a href="./signin">Sign In</a></li>
-      </ul>
+      <img src="images/head.jpg"/>
     </section>
 
     <section id="register-form">
@@ -37,7 +40,7 @@
          <input id="sign-out-button" type="submit" name="sign-out" value="Sign Out">
 
        </form>
-       <button><a href="./new+list">Create List of Sites to Visit</a><button>
+       <button><a href="./new+list">Create List of Sites to Visit</a></button>
     </section>
 
     <ul id="new-list">Create your list:
