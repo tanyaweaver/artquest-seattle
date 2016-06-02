@@ -2,7 +2,7 @@
   var listController = {};
 
   listController.index = function(ctx) {
-    createListController.showList();
+    pageView.showList();
     listView.generateListSection(ctx.locations);
     mapView.renderMap(ctx.locations);
     // listView.index();
@@ -15,7 +15,7 @@
   };
 
   listController.loadQuest = function(locations) {
-    createListController.showList();
+    pageView.showList();
     listView.generateListSection(locations);
     onMap.deleteMarkers();
     mapView.renderMap(locations);
