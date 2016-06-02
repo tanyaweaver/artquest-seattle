@@ -2,8 +2,11 @@
 <html>
 <head>
   <title>Artquest Seattle</title>
-  <link rel="stylesheet" href="styles/sass/map.css">
-  <link rel="stylesheet" href="styles/sass/style.css">
+  <link rel="stylesheet" href="styles/stylesheets/map.css">
+  <link rel="stylesheet" href="styles/stylesheets/base.css">
+  <link rel="stylesheet" href="styles/stylesheets/layout.css">
+  <link rel="stylesheet" href="styles/stylesheets/module.css">
+  <link rel="stylesheet" href="styles/skeleton.css">
   <link href="https://fonts.googleapis.com/css?family=Kalam|Pacifico|Kaushan+Script|Pinyon+Script|Alex+Brush|Homemade+Apple|Parisienne" rel="stylesheet" type="text/css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -26,12 +29,16 @@
     <a id="logo">Artquest &nbsp; Seattle</a>
       <nav>
         <a href="#" id="menu-icon"></a>
-        <ul>
+        <ul id="top-nav">
           <li><a href="./">Home</a></li>
           <li><a href="./about">About</a></li>
           <li><a href="./register">Register</a></li>
-          <li><a href="./signin">Sign In</a></li>
+          <li><a href="./signin"><button>Sign In</button></a></li>
         </ul>
+        <div id="signIn-nav">
+          <input type="text" placeholder="test@test.com">
+          <input type="text" placeholder="test@test.com">
+        </div>
       </nav>
 
 </header>
@@ -151,6 +158,7 @@
 
     <script src="scripts/models/art.js"></script>
     <script src="scripts/models/users.js"></script>
+    <script src="scripts/reg.js"></script>
   </body>
 <footer>
 </footer>
