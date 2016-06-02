@@ -124,6 +124,7 @@ getFBData = function(){
     }
 
   });
+  // return tempList;
 };
 
 User.prototype.getUserData = function () {
