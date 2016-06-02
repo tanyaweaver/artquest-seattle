@@ -133,7 +133,7 @@ User.prototype.getUserData = function () {
   this.userName = user.displayName;
   this.userEmail = user.email;
 
-  firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
+  firebase.database().ref('/users/' + user.uid + '/userArtList').once('value').then(function(snapshot) {
     if (snapshot.val() === null ) {
       artList.requestList(function(){
         firebase.database().ref('users/' + user.uid).set({
@@ -158,15 +158,15 @@ User.prototype.getUserData = function () {
 User.prototype.getUserQuests = function () {
   var user = firebase.auth().currentUser;
 
-  firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
+  firebase.database().ref('/users/' + user.uid + '/userQuests').once('value').then(function(snapshot) {
     console.log('inside of User.prototype.getUserQuests');
-    console.log(snapshot.val().userQuests);
-    if (!snapshot.val().userQuests) {
+    console.log(snapshot.val());
+    if (!snapshot.val()) {
       console.log('no quests in fb');
       Quest.all = [];
     } else {
       console.log('quest list exists in firebase DB');
-      Quest.all = snapshot.val().userQuests;
+      Quest.all = snapshot.val();
       if(Quest.all.length !== 0) {
         console.log('Quest.all.length!=0');
         $('#previous-quests > li').remove();
@@ -199,9 +199,11 @@ User.prototype.saveNewQuestToFb = function (allQuestsUpdatedArray) {
   //   if (!snapshot.val().userQuests) {
   //     console.log('no quests in fb');
   var user = firebase.auth().currentUser;
-  firebase.database().ref('users/' + user.uid).set({
-    userQuests: allQuestsUpdatedArray
-  });
+  var myRef = firebase.database().ref('/users/' + user.uid);
+  myRef.child('userQuests').set(allQuestsUpdatedArray);
+  // firebase.database().ref('users/' + user.uid).set({
+  //   userQuests: allQuestsUpdatedArray
+  // });
   //     return Quest.all = [];
   //   } else {
   //     console.log('quest list exists in firebase DB');
@@ -335,6 +337,7 @@ User.prototype.signedIn = function() {
       }
     } else {
       artquestUser.getUserData();
+      // artquestUser.getUserQuests();
     }
   }
 };
