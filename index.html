@@ -11,7 +11,7 @@
       <li>{{title}}</li><input type="checkbox">
   </script>
   <script id="render-existing-quests-from-firebase" type="text/x-handlebars-template">
-    <li id="{{index}}">{{type}} created on {{date}}<button id="{{index}}">see list</button>
+    <li id="{{index}}">{{type}} created on {{date}}<button id="see-list">see list</button><button id="hide-list">hide list</button>
       <ul id="list-quest"></ul></li>
   </script>
   <script id="render-list-for-quest" type="text/x-handlebars-template">
@@ -21,6 +21,7 @@
 </head>
 
 <body>
+
   <header>
     <a id="logo">Artquest &nbsp; Seattle</a>
       <nav>
@@ -54,19 +55,28 @@
          <input id="sign-out-button" type="submit" name="sign-out" value="Sign Out">
 
        </form>
+       <!-- <a href="./registredUser">skip register</a> -->
        <button><a href="./new+list">Create List of Sites to Visit</a></button>
+        <ul id="previous-quests">Your previous art quests:
 
-        <ol id="previous-quests">Your previous art quests:
           <li>You don't have any quests yet</li>
         </ul>
 
     </section>
+
+    <!-- <section id="registered-signedin">
+      <button><a href="./new+list">Create List of Sites to Visit</a></button>
+       <ul id="previous-quests">Your previous art quests:
+         <li>You don't have any quests yet</li>
+       </ul>
+    </section> -->
 
     <ul id="new-list">Create your list:
       <li id="one-day-challenge"><button><a href="./one+day">1-Day Challenge</a></button></li>
       <li id="two-day-challenge"><button><a href="./two+day">2-Day Challenge</a></button></li>
       <li id="show-all"><button><a href="./all+sites">Explore All Sites</a></button></li>
       <li id="geolocation"><button><a href="./near+me">Explore Sites Near Me</a></button></li>
+      <button id="locate-button" type="button" name="List Near Me">List Near Me</button>
     </ul>
 
     <section id="list-view">

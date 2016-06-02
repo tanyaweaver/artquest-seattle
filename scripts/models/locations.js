@@ -1,24 +1,25 @@
 (function(module) {
-var Locations = {};
+  var Locations = {};
 
-Locations.getRandomList = function(questNumber) {
-  var randomNumbers = [];
-  var randomQuest = [];
+  Locations.getRandomList = function(questNumber) {
+    console.log('inside random list function');
+    var randomNumbers = [];
+    var randomQuest = [];
 
-  function selector() {
-    return Math.floor(Math.random() * artquestUser.userArtList.length)
-  }
-  while (randomNumbers.length < questNumber) {
-    var number = selector();
-    if (randomNumbers.indexOf(number) === -1) {
-      randomNumbers.push(number);
+    function selector() {
+      return Math.floor(Math.random() * artquestUser.userArtList.length);
     }
-  }
-  randomNumbers.forEach(function(element) {
-    randomQuest.push(artquestUser.userArtList[element]);
-  });
-  return randomQuest;
-}
+    while (randomNumbers.length < questNumber) {
+      var number = selector();
+      if (randomNumbers.indexOf(number) === -1) {
+        randomNumbers.push(number);
+      }
+    }
+    randomNumbers.forEach(function(element) {
+      randomQuest.push(artquestUser.userArtList[element]);
+    });
+    return randomQuest;
+  };
 
   Locations.locations1 = [
     {
