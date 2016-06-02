@@ -24,7 +24,7 @@
     <li>Logo</li>
     <li><a href="./">Home</a></li>
     <li><a href="./about">About</a></li>
-    <button id="locate-button" type="button" name="List Near Me">List Near Me</button>
+    <!-- <button id="locate-button" type="button" name="List Near Me">List Near Me</button> -->
   </ul>
 </header>
 
@@ -39,7 +39,7 @@
     </section>
 
     <section id="register-form">
-       <form>
+       <form id="register">
          <label for="nameInput">Your Name</label>
          <input id="nameInput" type="text" placeholder="Screen Name">
          <label for="emailInput">Your Email</label>
@@ -57,17 +57,29 @@
         </ul>
     </section>
 
-    <ul id="new-list">Create your list:
-      <li id="one-day-challenge"><button><a href="./one+day">1-Day Challenge</a></button></li>
-      <li id="two-day-challenge"><button><a href="./two+day">2-Day Challenge</a></button></li>
-      <li id="show-all"><button><a href="./all+sites">Explore All Sites</a></button></li>
-      <li id="geolocation"><button><a href="./near+me">Explore Sites Near Me</a></button></li>
-    </ul>
+      <ul id="new-list">Create your list:
+        <li id="one-day-challenge"><button><a href="./one+day">1-Day Challenge</a></button></li>
+        <li id="two-day-challenge"><button><a href="./two+day">2-Day Challenge</a></button></li>
+        <li id="show-all"><button><a href="./all+sites">Explore All Sites</a></button></li>
+        <li id="geolocation"><button><a href="./near+me">Explore Sites Near Me</a></button></li>
+      </ul>
 
     <section id="list-view">
       <ul id="created-list"> </ul>
       <!-- <button id="see-map">See Map</button> -->
       <button id="create-new-list"><a href="./new+list">Create New List</a></button>
+    </section>
+
+    <section id="near-me-form">
+      <form id="near-me">
+        <input id="use-my-location-button" type="button" name="use-my-location" value="Use my Current Location">
+        <input id="address-input" type="text" placeholder="Starting Address">
+        <label for="distance-input">Distance</label>
+        <input id="distance-input" type="number" placeholder="Distance in Meters">
+        <label for="number-of-art-items-input">Number of Art Items</label>
+        <input id="number-of-art-items-input" type="number" placeholder="How Many">
+        <input id="create-near-me-button" type="button" name="create" value="Create List">
+      </form>
     </section>
 
     <section id="about">
