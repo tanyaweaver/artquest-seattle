@@ -8,21 +8,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <script id="artlist-template" type="text/x-handlebars-template">
-      <li>{{title}}</li><input type="checkbox">
+      <li>{{title}}<input type="checkbox"></li>
   </script>
+
   <script id="render-existing-quests-from-firebase" type="text/x-handlebars-template">
-    <li id="{{index}}">{{type}} created on {{date}}<button>see list</button>
+    <li id="{{index}}">{{type}} created on {{date}}<button>See Details</button>
       <ul id="list-quest"></ul>
     </li>
   </script>
-  <!-- <script id="render-list-for-quest" type="text/x-handlebars-template">
-    <li>{{title}}</li>
-  </script> -->
-
 </head>
 
 <body>
-
   <header>
     <a id="logo">Artquest &nbsp; Seattle</a>
       <nav>
@@ -34,13 +30,12 @@
           <li><a href="./signin">Sign In</a></li>
         </ul>
       </nav>
-
 </header>
-<main>
 
-<section id="all-tabs-except-map">
+<main>
+  <section id="all-tabs-except-map">
     <section id="home-page">
-      <img src="images/head.jpg"/>
+        <img src="images/head.jpg"/>
     </section>
 
     <section id="register-form">
@@ -59,22 +54,22 @@
 
      <section id="registered-signedin">
         <div id="create-new-list">
-             <button><a href="./new+list">Create List of Sites to Visit</a></button>
-             <ul id="new-list">
-               <li id="one-day-challenge"><button><a href="./one+day">1-Day Challenge</a></button></li>
-               <li id="two-day-challenge"><button><a href="./two+day">2-Day Challenge</a></button></li>
-             </ul>
+           <button><a href="./new+list">Create List of Sites to Visit</a></button>
+           <ul id="new-list">
+             <li id="one-day-challenge"><button><a href="./one+day">1-Day Challenge</a></button></li>
+             <li id="two-day-challenge"><button><a href="./two+day">2-Day Challenge</a></button></li>
+           </ul>
          </div>
 
          <div id="list-view">
-              <ul id="created-list"> </ul>
+            <ul id="created-list"> </ul>
          </div>
 
          <div id="all-my-quests">
-              <button><a href="./see+all+quests">See My Previous Quests</a></button>
-              <ul id="previous-quests">
-                <li>You don't have any quests yet</li>
-              </ul>
+            <button><a href="./see+all+quests">See My Previous Quests</a></button>
+            <ul id="previous-quests">
+              <li>You don't have any quests yet</li>
+            </ul>
         </div>
     </section>
 
@@ -93,14 +88,11 @@
     <section id="about">
       <div id="team-info">Team info placeholder</div>
     </section>
-
   </section>
 
   <section id="map-view">
     <div id="map"></div>
   </section>
-
-
 </main>
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
      <script>
@@ -121,11 +113,8 @@
     <script src="scripts/models/locations.js"></script>
     <script src="scripts/models/previousQuests.js"></script>
 
-
     <script src="scripts/views/listView.js"></script>
-    <script src="scripts/views/mapView.js"></script>
     <script src="scripts/views/pageView.js"></script>
-    <script src="scripts/views/previousQuestsView.js"></script>
 
     <script src="scripts/controllers/homeController.js"></script>
     <script src="scripts/controllers/aboutController.js"></script>

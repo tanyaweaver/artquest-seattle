@@ -2,10 +2,7 @@
   var listController = {};
 
   listController.index = function(ctx) {
-    pageView.showList();
-    listView.generateListSection(ctx.locations);
-    mapView.renderMap(ctx.locations);
-    // listView.index();
+    listController.loadQuest(ctx.locations);
     console.log(Quest.all + ' - Quest.all before adding new list');
     var newQuest = new Quest(ctx.createdOn, ctx.typeChallenge, ctx.locations);
     console.log(newQuest);
@@ -16,9 +13,9 @@
 
   listController.loadQuest = function(locations) {
     pageView.showList();
-    listView.generateListSection(locations);
+    mapView.generateListSection(locations);
     onMap.deleteMarkers();
-    mapView.renderMap(locations);
+    pageView.renderMap(locations);
   };
 
   listController.loadOneDayChallenge = function(ctx,next) {

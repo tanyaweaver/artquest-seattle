@@ -6,5 +6,4 @@ page('/two+day', listController.loadTwoDayChallenge, listController.index);
 page('/registered+signedin', pageView.displayOnRegistrationSignin);
 page('/new+list', pageView.createNewQuest);
 page('/see+all+quests',pageView.showAllQuests);
-
 page();

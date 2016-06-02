@@ -181,16 +181,7 @@
             console.log('index of quest ' + quest.index);
             $('#previous-quests').append(template(quest));
           });
-          previousQuestsView.clickListeners();
-          // for(var i = 0; i < Quest.all.length; i++) {
-          //   console.log(Quest.all[i]);
-            // $('button').on('click', function() {
-              // var template = Handlebars.compile($('#render-lis-for-quest').html());
-              // Quest.all[i].list.forEach(function(location) {
-              //   $('#list-quest').append(template(location));
-              // });
-            // });
-          // }
+          pageView.clickListeners();
         }
       }
     });
