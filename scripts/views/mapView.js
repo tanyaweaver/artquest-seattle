@@ -3,9 +3,7 @@
 
   mapView.renderMap = function(locations) {
     google.maps.event.trigger(map, 'resize');
-    // onMap.showMyGeolocation();
     onMap.placeMarkers(locations);
-    // onMap.resizeMap();
   };
 
   // mapView.index = function() {

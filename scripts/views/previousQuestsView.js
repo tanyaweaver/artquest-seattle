@@ -1,18 +1,25 @@
 (function(module) {
   var previousQuestsView = {};
-  // previousQuestsView.renderQuests = function(getArray) {
-  //   getArray();
-  //   console.log('Quest.all after calling getArray ' + Quest.all.length);
-  //   // console.log('Quest.all.length = ' + artquestUser.getUserQuests().length);
-  //   if(Quest.all.length !== 0) {
-  //     console.log('Quest.all.length!=0');
-  //     $('#previous-quests > li').remove();
-  //     var template = Handlebars.compile($('#render-existing-quests-from-firebase').html());
-  //     Quest.all.forEach(function(quest) {
-  //       $('#previous-quests').append(template(quest));
-  //     });
-  //   }
-  //   console.log('end of render function');
+  previousQuestsView.clickListeners = function() {
+    for(var i = 0; i < Quest.all.length; i++) {
+      $('button').on('click', function() {
+        // var template = Handlebars.compile($('#render-lis-for-quest').html());
+        // Quest.all[i].list.forEach(function(location) {
+        //   $('#list-quest').append(template(location));
+        // });
+        onMap.deleteMarkers();
+        console.log(Quest.all[i]);
+        mapView.renderMap(Quest.all[i].list);
+      });
+    }
+  };
+  // previousQuestsView.renderQuests = function(questListArray) {
+  //   // $('#previous-quests > li').remove();
+  //   // var template = Handlebars.compile($('#render-lis-for-quest').html());
+  //   // questListArray.forEach(function(quest) {
+  //   //   $('#previous-quests').append(template(quest));
+  //   // });
+  //   // renderMap(questListArray);
   // };
   module.previousQuestsView = previousQuestsView;
 })(window);

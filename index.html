@@ -5,7 +5,11 @@
   <link rel="stylesheet" href="styles/map.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script id="render-existing-quests-from-firebase" type="text/x-handlebars-template">
-    <li>{{date}} {{type}}</li>
+    <li id="{{index}}">{{type}} created on {{date}}<button><a href="./quests/{{index}}">see list</a></button>
+      <ul id="list-quest"></li></li>
+  </script>
+  <script id="render-list-for-quest" type="text/x-handlebars-template">
+    <li>{{title}}</li>
   </script>
 </head>
 
@@ -41,7 +45,7 @@
 
        </form>
        <button><a href="./new+list">Create List of Sites to Visit</a></button>
-        <ul id="previous-quests">Your previous art quests:
+        <ol id="previous-quests">Your previous art quests:
           <li>You don't have any quests yet</li>
         </ul>
     </section>

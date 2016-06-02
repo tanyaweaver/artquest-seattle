@@ -108,25 +108,35 @@ User.prototype.getUserQuests = function () {
     console.log(snapshot.val().userQuests);
     if (!snapshot.val().userQuests) {
       console.log('no quests in fb');
-      // firebase.database().ref('users/' + user.uid).set({
-      //   userQuests: Quest.all
-      // });
       Quest.all = [];
-      return Quest.all;
     } else {
       console.log('quest list exists in firebase DB');
-      console.log('snapshot.val().userQuests: ' + snapshot.val().userQuests);
       Quest.all = snapshot.val().userQuests;
-      console.log(Quest.all);
-      console.log('Quest.all after calling getArray ' + Quest.all.length);
-      // console.log('Quest.all.length = ' + artquestUser.getUserQuests().length);
       if(Quest.all.length !== 0) {
         console.log('Quest.all.length!=0');
         $('#previous-quests > li').remove();
         var template = Handlebars.compile($('#render-existing-quests-from-firebase').html());
         Quest.all.forEach(function(quest) {
+          quest.index = Quest.all.indexOf(quest);
+          console.log('index of quest ' + quest.index);
           $('#previous-quests').append(template(quest));
         });
+        // previousQuestsView.clickListeners();
+        for(var i = 0; i < Quest.all.length; i++) {
+          page('/quests/' + i, listController.loadQuest(Quest.all[i].list));
+        }
+        // for(var i = 0; i < Quest.all.length; i++) {
+        //   console.log(Quest.all[i]);
+          // $('button').on('click', function() {
+            // var template = Handlebars.compile($('#render-lis-for-quest').html());
+            // Quest.all[i].list.forEach(function(location) {
+            //   $('#list-quest').append(template(location));
+            // });
+          //   onMap.deleteMarkers();
+          //   console.log(Quest.all[i]);
+          //   mapView.renderMap(Quest.all[i].list);
+          // });
+        // }
       }
     }
   });
