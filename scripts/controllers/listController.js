@@ -12,13 +12,14 @@
     mapView.renderMap(ctx.locations);
     listView.index();
     console.log(Quest.all + ' - Quest.all before adding new list');
-    Quest.all.push(new Quest(ctx.locations));
+    Quest.all.push(new Quest(ctx.typeChallenge, ctx.locations));
     console.log(Quest.all + ' - Quest.all after adding new list');
     artquestUser.saveNewQuestToFb(Quest.all);
   };
 
   listController.loadOneDayChallenge = function(ctx,next) {
     ctx.locations = Locations.locations1;
+    ctx.typeChallenge = 'One Day Challenge';
     next();
   };
 

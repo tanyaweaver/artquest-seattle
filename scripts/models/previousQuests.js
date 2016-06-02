@@ -1,6 +1,6 @@
 (function(module) {
-  var Quest = function(opts) {
-    this.type = 'challenge';
+  var Quest = function(type, opts) {
+    this.type = type;
     this.date = new Date();
     this.list = opts;
   };
