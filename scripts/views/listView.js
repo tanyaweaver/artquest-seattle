@@ -10,8 +10,8 @@
     $('#created-list > *').remove();
     array.forEach(function(item) {
       $('#created-list').append(template(item));
-    })
-  }
+    });
+  };
 
   listView.index = function() {
     $('#list-view').show().siblings().hide();

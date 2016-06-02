@@ -149,7 +149,7 @@ User.prototype.getUserData = function () {
     } else {
       console.log('user.artList exists in firebase DB');
       // console.log(snapshot.val().userArtList);
-      artquestUser.userArtList = snapshot.val().userArtList;
+      artquestUser.userArtList = snapshot.val();
       // page('/new+list');
     }
   });
@@ -192,6 +192,7 @@ User.prototype.getUserQuests = function () {
 };
 
 User.prototype.saveNewQuestToFb = function (allQuestsUpdatedArray) {
+  console.log(allQuestsUpdatedArray);
   // var user = firebase.auth().currentUser;
   //
   // firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
