@@ -17,7 +17,6 @@ Locations.getRandomList = function(questNumber) {
   randomNumbers.forEach(function(element) {
     randomQuest.push(artquestUser.userArtList[element]);
   });
-  console.log(randomNumbers);
   return randomQuest;
 }
 
