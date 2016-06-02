@@ -144,13 +144,13 @@ User.prototype.getUserData = function () {
           this.child('fbArtList').push(item);
         }, myRef);
         artquestUser.userArtList = artList.all;
-        page('/new+list');
+        // page('/new+list');
       });
     } else {
       console.log('user.artList exists in firebase DB');
       // console.log(snapshot.val().userArtList);
       artquestUser.userArtList = snapshot.val().userArtList;
-      page('/new+list');
+      // page('/new+list');
     }
   });
 };
@@ -242,7 +242,7 @@ getMyLocation = function() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(locationSuccess);
   } else {
-    console.log("Geolocation is not supported by this browser.");
+    console.log('Geolocation is not supported by this browser.');
   }
 };
 
@@ -263,7 +263,7 @@ function codeAddress(address) {
       console.log(latlng.lat(), latlng.lng());
       return([latlng.lat(), latlng.lng()]);
     } else {
-    alert("Geocode was not successful for the following reason: " + status);
+      alert('Geocode was not successful for the following reason: ' + status);
     }
   });
 }
@@ -292,12 +292,11 @@ function sitesNearAddress2(distanceFilter, address){
       return nearMe;
 
     } else {
-    alert("Geocode was not successful for the following reason: " + status);
+      alert('Geocode was not successful for the following reason: ' + status);
     }
   });
 
 }
-
 
 function sitesNearAddress(distanceFilter, address) {
   var latlng = codeAddress(address);
@@ -316,7 +315,6 @@ function sitesNearAddress(distanceFilter, address) {
   }, obj);
   return nearMe;
 };
-
 
 User.prototype.signedIn = function() {
   var user = firebase.auth().currentUser;
