@@ -3,7 +3,7 @@
   registerController.index = function() {
     $('#register-form').show().siblings().hide();
     console.log('register controller');
-    previousQuestsView.renderQuests(artquestUser.getUserQuests);
+    artquestUser.getUserQuests();
   };
   module.registerController = registerController;
 })(window);
