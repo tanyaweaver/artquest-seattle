@@ -3,6 +3,7 @@
 
   homeController.index = function() {
     console.log('homecontroller');
+    $('#signIn-nav').toggle(false);
     var user = firebase.auth().currentUser;
     if (user === null) {
       console.log('homeController: signed out');
