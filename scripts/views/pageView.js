@@ -80,7 +80,7 @@
   pageView.clickListeners = function() {
     $('#previous-quests').delegate('li', 'click', function() {
       var i = $('#previous-quests > li').index(this);
-      listController.loadQuest(Quest.all[i].list);
+      listController.displayQuest(Quest.all[i].list);
     });
   };
 
