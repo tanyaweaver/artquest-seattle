@@ -1,13 +1,11 @@
 (function(module) {
   var pageView = {};
   pageView.createNewQuest = function() {
-    console.log('hi');
     $('#new-list').show();
     $('#near-me-form').show();
     $('#previous-quests').hide();
     $('#list-view').hide();
     onMap.deleteMarkers();
-    console.log(onMap.markersArray);
   };
 
   pageView.showList = function() {
@@ -18,7 +16,6 @@
   };
 
   pageView.showAllQuests = function() {
-    console.log('inside of the all quests route');
     artquestUser.getUserQuests();
     $('#previous-quests').show();
     $('#new-list').hide();
@@ -27,7 +24,6 @@
   };
 
   pageView.displayOnRegistrationSignin = function() {
-    console.log('inside of the registered route');
     $('#registered-signedin').show().siblings().hide();
     $('#new-list').hide();
     $('#previous-quests').hide();
@@ -55,8 +51,6 @@
       e.preventDefault();
 
       gClickTargetIndex = $(this).parent('li').index();
-      // $(this).prop('checked', false);
-      console.log(gClickTargetIndex);
       gArtListItem = $(event.target).data('test');
       thereLat = parseFloat(gArtListItem.latitude);
       thereLon = parseFloat(gArtListItem.longitude);
@@ -66,22 +60,15 @@
           var hereLon = parseFloat(position.coords.longitude);
 
           var d = distanceBetweenLocations(hereLat, hereLon, thereLat,thereLon );
-          console.log(gDistanceThreshold - d);
           if (d < gDistanceThreshold){
-            console.log('close enough', gClickTargetIndex);
             $('#created-list li:eq(' + gClickTargetIndex + ') input').prop('checked', true);
           } else {
-            console.log('too far',gClickTargetIndex);
             $('#created-list li:eq(' + gClickTargetIndex + ') input').prop('checked', false);
           }
         });
       } else {
         console.log('Geolocation is not supported by this browser.');
       }
-
-      // var i = $('#previous-quests > li').index(this);
-      // console.log(i);
-      // listController.loadQuest(Quest.all[i].list);
     });
   };
 
@@ -93,7 +80,6 @@
   pageView.clickListeners = function() {
     $('#previous-quests').delegate('li', 'click', function() {
       var i = $('#previous-quests > li').index(this);
-      console.log(i);
       listController.loadQuest(Quest.all[i].list);
     });
   };
