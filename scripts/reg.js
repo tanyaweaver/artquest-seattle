@@ -1,5 +1,8 @@
-$(document).ready(function(){
+// $(document).ready(function(){
+function click() {
   $('#sign-in-button').on('click', function(){
+    $('#register-form').hide();
+    $('#home-page').show();
     if ($('#sign-in-button').text() === 'Sign In') {
       $('#signIn-nav').toggle('#reveal');
       var email = $('#email-signin').val();
@@ -11,4 +14,4 @@ $(document).ready(function(){
       artquestUser.signOut();
     }
   });
-});
+};
