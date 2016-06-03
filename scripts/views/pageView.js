@@ -33,5 +33,26 @@
     $('#list-view').hide();
   };
 
+  pageView.generateListSection = function (array) {
+    var template = Handlebars.compile($('#artlist-template').html());
+    $('#created-list > *').remove();
+    array.forEach(function(item) {
+      $('#created-list').append(template(item));
+    });
+  };
+
+  pageView.renderMap = function(locations) {
+    google.maps.event.trigger(map, 'resize');
+    onMap.placeMarkers(locations);
+  };
+
+  pageView.clickListeners = function() {
+    $('#previous-quests').delegate('li', 'click', function() {
+      var i = $('#previous-quests > li').index(this);
+      console.log(i);
+      listController.loadQuest(Quest.all[i].list);
+    });
+  };
+
   module.pageView = pageView;
 })(window);

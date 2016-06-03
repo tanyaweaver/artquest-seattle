@@ -15,17 +15,17 @@
 
   // var ref = firebase.database();
 
-  $('#register-button').on('click', function(e) {
+  $('#register-form-button').on('click', function(e) {
     e.preventDefault();
     console.log('Register Button clicked');
     artquestUser.register();
   });
-
-  $('#sign-in-button').on('click', function(e) {
-    e.preventDefault();
-    console.log('sign-in Button clicked');
-    artquestUser.signIn();
-  });
+  //
+  // $('#sign-in-button').on('click', function(e) {
+  //   e.preventDefault();
+  //   console.log('sign-in Button clicked');
+  //   artquestUser.signIn();
+  // });
 
   $('#sign-out-button').on('click', function(e) {
     e.preventDefault();
@@ -53,10 +53,10 @@
     });
   };
 
-  User.prototype.signIn = function() {
+  User.prototype.signIn = function(email, password) {
     console.log('user sign in');
-    var email = $('#emailInput').val();
-    var password = $('#passwordInput').val();
+    // var email = $('#emailInput').val();
+    // var password = $('#passwordInput').val();
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
       //handle errors here
       var errorCode = error.code;
@@ -74,6 +74,7 @@
       artquestUser.userID = '';
       artquestUser.userName = '';
       artquestUser.userEmail = '';
+      page('/');
     }, function(error) {
       // An error happened.
       console.log('error signing out');
@@ -149,13 +150,14 @@
             this.child('fbArtList').push(item);
           }, myRef);
           artquestUser.userArtList = artList.all;
-          // page('/new+list');
+          page('/signedin');
         });
       } else {
         console.log('user.artList exists in firebase DB');
         // console.log(snapshot.val().userArtList);
         artquestUser.userArtList = snapshot.val();
         // page('/new+list');
+        page('/signedin');
       }
     });
   };
@@ -181,16 +183,7 @@
             console.log('index of quest ' + quest.index);
             $('#previous-quests').append(template(quest));
           });
-          previousQuestsView.clickListeners();
-          // for(var i = 0; i < Quest.all.length; i++) {
-          //   console.log(Quest.all[i]);
-            // $('button').on('click', function() {
-              // var template = Handlebars.compile($('#render-lis-for-quest').html());
-              // Quest.all[i].list.forEach(function(location) {
-              //   $('#list-quest').append(template(location));
-              // });
-            // });
-          // }
+          pageView.clickListeners();
         }
       }
     });
@@ -355,6 +348,9 @@
             // photoURL: "https://example.com/jane-q-user/profile.jpg"
           }).then(function() {
             // Update successful.
+            $('#sign-in-button').text('Sign Out');
+            $('#register-button').hide();
+
             artquestUser.getUserData();
           }, function(error) {
             // An error happened.
@@ -362,6 +358,9 @@
           });
         }
       } else {
+        $('#sign-in-button').text('Sign Out');
+        $('#register-button').hide();
+
         artquestUser.getUserData();
         // artquestUser.getUserQuests();
       }
@@ -374,6 +373,8 @@
       artquestUser.signedIn();
     } else {
       console.log('no current user signed in');
+      $('#sign-in-button').text('Sign In');
+      $('#register-button').show();
       // artquestUser.signedOut();
     }
   });

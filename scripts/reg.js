@@ -1,5 +1,14 @@
 $(document).ready(function(){
-  $('#top-nav button').on('click', function(){
-    $('#signIn-nav').toggle('#reveal');
+  $('#sign-in-button').on('click', function(){
+    if ($('#sign-in-button').text() === 'Sign In') {
+      $('#signIn-nav').toggle('#reveal');
+      var email = $('#email-signin').val();
+      var password = $('#password-signin').val();
+      if(email !== 'yourEmail') {
+        artquestUser.signIn($('#email-signin').val(), $('#password-signin').val());
+      };
+    } else if ($('#sign-in-button').text() === 'Sign Out') {
+      artquestUser.signOut();
+    }
   });
 });

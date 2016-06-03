@@ -1,8 +1,45 @@
 #map {
-  width: 70%;
+  width: 90%;
   margin: 0 auto;
-  padding-top: 25%;
-  padding-bottom: 25%;
+  padding-top: 50%;
+  padding-bottom: 5%;
   margin-top: 5%;
   border: 5px solid black;
+}
+
+#map-view {
+  clear:both;
+  margin-top: 0;
+}
+
+#all-tabs-except-map {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+#registered-signedin {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#registered-signedin li {
+  float: left;
+  clear: left;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#one-day-challenge {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#all-my-quests {
+  clear:both;
+  display: block;
+}
+
+#new-list {
+  text-align: center;
 }
