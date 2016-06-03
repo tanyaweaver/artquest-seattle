@@ -13,16 +13,13 @@
   };
 
   navController.displayAbout = function() {
-    console.log('about route');
     $('#signIn-nav').toggle(false);
     $('#about').show().siblings().hide();
   };
 
   navController.displayRegister = function() {
     $('#signIn-nav').toggle(false);
-
     $('#register-form').show().siblings().hide();
-    console.log('register controller');
     artquestUser.getUserQuests();
   };
 
