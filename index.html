@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>Artquest Seattle</title>
+  <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+  <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
   <link rel="stylesheet" href="styles/stylesheets/map.css">
   <link rel="stylesheet" href="styles/stylesheets/base.css">
   <link rel="stylesheet" href="styles/stylesheets/skeleton.css">
@@ -13,11 +15,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <script id="artlist-template" type="text/x-handlebars-template">
-      <li>{{title}}<input type="checkbox"></li>
+      <li >{{title}}<input id="artlist_{{index}}" data-test='{ "title": "{{title}}", "index": "{{index}}", "latitude": "{{latitude}}", "longitude": "{{longitude}}" }' type="checkbox"></li>
   </script>
 
   <script id="render-existing-quests-from-firebase" type="text/x-handlebars-template">
-    <li id="{{index}}">{{type}} created on {{date}}<button>See Details</button>
+    <li id="{{index}}">{{type}}  created {{date}} <button>Go</button>
       <ul id="list-quest"></ul>
     </li>
   </script>
@@ -29,10 +31,10 @@
       <nav>
         <a href="#" id="menu-icon"></a>
         <ul id="top-nav">
-          <li><a href="./">Home</a></li>
-          <li><a href="./about">About</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
 
-          <li><a id="register-button" href="./register">Register</a></li>
+          <li><a id="register-button" href="/register">Register</a></li>
           <li><a id="sign-in-button">Sign In</a></li>
 
         </ul>
@@ -87,12 +89,12 @@
     <section id="near-me-form">
       <form id="near-me">
         <input id="use-my-location-button" type="button" name="use-my-location" value="Use my Current Location">
-        <input id="address-input" type="text" placeholder="Starting Address">
+        <input id="address-input" type="text" placeholder="Starting Address" value="2901 3rd Ave, Seattle, WA">
         <label for="distance-input">Distance</label>
-        <input id="distance-input" type="number" placeholder="Distance in Meters">
+        <input id="distance-input" type="number" placeholder="Distance in Meters" value="1000">
         <label for="number-of-art-items-input">Number of Art Items</label>
-        <input id="number-of-art-items-input" type="number" placeholder="How Many">
-        <input id="create-near-me-button" type="button" name="create" value="Create List">
+        <input id="art-items-qty-input" type="number" placeholder="How Many" value="20">
+        <button id="create-near-me-button" type="button" name="create" value="Create List"><a href="/near+address">Create List Near Address</a></button>
       </form>
     </section>
 

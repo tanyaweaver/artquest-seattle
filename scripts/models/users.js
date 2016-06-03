@@ -33,12 +33,14 @@
     artquestUser.signOut();
   });
 
-  $('#locate-button').on('click', function(e) {
-    e.preventDefault();
-    console.log('Locate Button clicked');
-    getMyLocation(1000);
-    // sitesNearMe(1000);
-  });
+  // $('#create-near-me-button').on('click', function(e) {
+  //   e.preventDefault();
+  //   console.log('Locate Button clicked');
+  //   artquestUser.sitesNearAddress($('#distance-input').val(), $('#address-input').val(), $('#art-items-qty-input').val());
+  //   // sitesNearMe(1000);
+  // });
+
+
 
   User.prototype.register = function() {
     console.log('Registering a new user');
@@ -166,28 +168,28 @@
     var user = firebase.auth().currentUser;
     if (user != null) {
 
-    firebase.database().ref('/users/' + user.uid + '/userQuests').once('value').then(function(snapshot) {
-      console.log('inside of User.prototype.getUserQuests');
-      console.log(snapshot.val());
-      if (!snapshot.val()) {
-        console.log('no quests in fb');
-        Quest.all = [];
-      } else {
-        console.log('quest list exists in firebase DB');
-        Quest.all = snapshot.val();
-        if(Quest.all.length !== 0) {
-          console.log('Quest.all.length!=0');
-          $('#previous-quests > li').remove();
-          var template = Handlebars.compile($('#render-existing-quests-from-firebase').html());
-          Quest.all.forEach(function(quest) {
-            quest.index = Quest.all.indexOf(quest);
-            console.log('index of quest ' + quest.index);
-            $('#previous-quests').append(template(quest));
-          });
-          pageView.clickListeners();
+      firebase.database().ref('/users/' + user.uid + '/userQuests').once('value').then(function(snapshot) {
+        console.log('inside of User.prototype.getUserQuests');
+        console.log(snapshot.val());
+        if (!snapshot.val()) {
+          console.log('no quests in fb');
+          Quest.all = [];
+        } else {
+          console.log('quest list exists in firebase DB');
+          Quest.all = snapshot.val();
+          if(Quest.all.length !== 0) {
+            console.log('Quest.all.length!=0');
+            $('#previous-quests > li').remove();
+            var template = Handlebars.compile($('#render-existing-quests-from-firebase').html());
+            Quest.all.forEach(function(quest) {
+              quest.index = Quest.all.indexOf(quest);
+              console.log('index of quest ' + quest.index);
+              $('#previous-quests').append(template(quest));
+            });
+            pageView.clickListeners();
+          }
         }
-      }
-    });
+      });
     }
   };
 
@@ -217,7 +219,7 @@
   };
 
   distanceBetweenLocations = function (lat1, lon1, lat2, lon2) {
-    // console.log(lat1,lon1, lat2,lon2);
+    console.log(lat1,lon1, lat2,lon2);
 
     var φ1 = lat1.toRadians(), φ2 = lat2.toRadians(), Δλ = (lon2 - lon1).toRadians(), R = 6371e3; // gives d in metres
     var d = Math.acos( Math.sin(φ1) * Math.sin(φ2) + Math.cos(φ1) * Math.cos(φ2) * Math.cos(Δλ) ) * R;
@@ -334,11 +336,6 @@
   //   return nearMe;
   // };
 
-  User.prototype.createQuestFromData = function(address, distance, quantity) {
-    sitesNearAddress2(distance, address);
-
-  };
-
   User.prototype.signedIn = function() {
     var user = firebase.auth().currentUser;
     console.log(user.uid + ' signed in');
@@ -360,6 +357,8 @@
           });
         }
       } else {
+        $('#signIn-nav').toggle(false);
+
         $('#sign-in-button').text('Sign Out');
         $('#register-button').hide();
 
@@ -377,11 +376,14 @@
       console.log('no current user signed in');
       $('#sign-in-button').text('Sign In');
       $('#register-button').show();
+      $('#email-signin').val('');
+      $('#password-signin').val('');
       // artquestUser.signedOut();
     }
   });
 
   module.artquestUser = artquestUser;
   module.tempQuestList = tempQuestList;
+  module.distanceBetweenLocations = distanceBetweenLocations;
 
 })(window);
