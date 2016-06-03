@@ -13,7 +13,7 @@
 
   listController.loadQuest = function(locations) {
     pageView.showList();
-    mapView.generateListSection(locations);
+    pageView.generateListSection(locations);
     onMap.deleteMarkers();
     pageView.renderMap(locations);
   };

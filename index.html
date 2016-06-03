@@ -5,8 +5,8 @@
   <link rel="stylesheet" href="styles/stylesheets/map.css">
   <link rel="stylesheet" href="styles/stylesheets/base.css">
   <link rel="stylesheet" href="styles/stylesheets/layout.css">
-  <link rel="stylesheet" href="styles/stylesheets/module.css">
   <link rel="stylesheet" href="styles/skeleton.css">
+  <link rel="stylesheet" href="styles/stylesheets/module.css">
   <link href="https://fonts.googleapis.com/css?family=Kalam|Pacifico|Kaushan+Script|Pinyon+Script|Alex+Brush|Homemade+Apple|Parisienne" rel="stylesheet" type="text/css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -29,12 +29,12 @@
         <ul id="top-nav">
           <li><a href="./">Home</a></li>
           <li><a href="./about">About</a></li>
-          <li><a href="./register">Register</a></li>
-          <li><a href="./signin"><button>Sign In</button></a></li>
+          <li><a id="register-button" href="./register"  >Register</a></li>
+          <li><a id="sign-in-button">Sign In</a></li>
         </ul>
         <div id="signIn-nav">
-          <input type="text" placeholder="test@test.com">
-          <input type="text" placeholder="test@test.com">
+          <input id="email-signin" type="email" placeholder="yourEmail">
+          <input id="password-signin" type="password" placeholder="password">
         </div>
       </nav>
 </header>
@@ -53,9 +53,9 @@
          <input id="emailInput" type="email" placeholder="you@email.com">
          <label for="passwordInput">Your Password</label>
          <input id="passwordInput" type="text" placeholder="password">
-         <input id="register-button" type="submit" name="submit" value="Register">
-         <input id="sign-in-button" type="submit" name="sign-in" value="Sign In">
-         <input id="sign-out-button" type="submit" name="sign-out" value="Sign Out">
+         <input id="register-form-button" type="submit" name="submit" value="Register" onkeydown = "if (event.keyCode == 13) { document.getElementById('signin-button').click();}">
+         <!-- <input id="sign-in-button" type="submit" name="sign-in" value="Sign In">
+         <input id="sign-out-button" type="submit" name="sign-out" value="Sign Out"> -->
        </form>
      </section>
 

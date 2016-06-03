@@ -33,7 +33,7 @@
     $('#list-view').hide();
   };
 
-  mapView.generateListSection = function (array) {
+  pageView.generateListSection = function (array) {
     var template = Handlebars.compile($('#artlist-template').html());
     $('#created-list > *').remove();
     array.forEach(function(item) {
