@@ -5,10 +5,10 @@
     console.log('homecontroller');
     var user = firebase.auth().currentUser;
     if (user === null) {
-      console.log('signed out');
+      console.log('homeController: signed out');
       $('#home-page').show().siblings().hide();
     } else {
-      console.log('signedIN');
+      console.log('home controller: signedIN');
       page('/signedin');
 
     }
