@@ -1,5 +1,4 @@
-// $(document).ready(function(){
-function click() {
+$(document).ready(function(){
   $('#sign-in-button').on('click', function(){
     $('#register-form').hide();
     $('#home-page').show();
@@ -14,4 +13,4 @@ function click() {
       artquestUser.signOut();
     }
   });
-};
+});

@@ -164,6 +164,7 @@
 
   User.prototype.getUserQuests = function () {
     var user = firebase.auth().currentUser;
+    if (user != null) {
 
     firebase.database().ref('/users/' + user.uid + '/userQuests').once('value').then(function(snapshot) {
       console.log('inside of User.prototype.getUserQuests');
@@ -187,6 +188,7 @@
         }
       }
     });
+    }
   };
 
   User.prototype.saveNewQuestToFb = function (allQuestsUpdatedArray) {
