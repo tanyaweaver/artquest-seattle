@@ -43,6 +43,8 @@ section {
 
 #signIn-nav {
   display: none;
+  float: right;
+  margin-top: 10px;
 }
 
 #reveal {
