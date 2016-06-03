@@ -18,7 +18,7 @@
   display: hidden;
   width: 40px;
   height: 40px;
-  background: #4C8FEC url(images/wavy-hamburger.png) center;
+  background: url(/images/sqr-ham.png) center;
 }
 
 a:hover#menu-icon {
@@ -47,4 +47,23 @@ section {
 
 #reveal {
   display: block;
+}
+
+#team-pics h1 {
+  text-align: center;
+  font-family: 'Homemade Apple', cursive;
+  font-weight: bold;
+  font-size: 50px;
+  clear: both;
+}
+
+#team-pics img {
+  max-width: 240px;
+  max-height: 300px;
+  float: left;
+  margin-right: 10px;
+}
+
+#team-text p {
+  float: right;
 }

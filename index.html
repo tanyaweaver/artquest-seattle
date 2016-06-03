@@ -2,30 +2,29 @@
 <html>
 <head>
   <title>Artquest Seattle</title>
-  <link rel="stylesheet" href="styles/stylesheets/map.css">
-  <link rel="stylesheet" href="styles/stylesheets/base.css">
-  <link rel="stylesheet" href="styles/stylesheets/layout.css">
   <link rel="stylesheet" href="styles/stylesheets/module.css">
   <link rel="stylesheet" href="styles/stylesheets/skeleton.css">
+  <link rel="stylesheet" href="styles/stylesheets/map.css">
+  <link rel="stylesheet" href="styles/stylesheets/base.css">
+  <link rel="stylesheet" href="styles/stylesheets/skeleton.css">
+  <link rel="stylesheet" href="styles/stylesheets/layout.css">
+
+
   <link href="https://fonts.googleapis.com/css?family=Kalam|Pacifico|Kaushan+Script|Pinyon+Script|Alex+Brush|Homemade+Apple|Parisienne" rel="stylesheet" type="text/css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <script id="artlist-template" type="text/x-handlebars-template">
-      <li>{{title}}</li><input type="checkbox">
+      <li>"{{title}}"<input type="checkbox"></li>
   </script>
+
   <script id="render-existing-quests-from-firebase" type="text/x-handlebars-template">
-    <li id="{{index}}">{{type}} created on {{date}}<button>see list</button>
+    <li id="{{index}}">{{type}} created on {{date}}<button>See Details</button>
       <ul id="list-quest"></ul>
     </li>
   </script>
-  <!-- <script id="render-list-for-quest" type="text/x-handlebars-template">
-    <li>{{title}}</li>
-  </script> -->
-
 </head>
 
 <body>
-
   <header>
     <a id="logo">Artquest &nbsp; Seattle</a>
       <nav>
@@ -33,21 +32,22 @@
         <ul id="top-nav">
           <li><a href="./">Home</a></li>
           <li><a href="./about">About</a></li>
-          <li><a href="./register">Register</a></li>
-          <li><a href="./signin"><button>Sign In</button></a></li>
+
+          <li><a id="register-button" href="./register">Register</a></li>
+          <li><a id="sign-in-button">Sign In</a></li>
+
         </ul>
         <div id="signIn-nav">
-          <input type="text" placeholder="test@test.com">
-          <input type="text" placeholder="test@test.com">
+          <input id="email-signin" type="email" placeholder="yourEmail">
+          <input id="password-signin" type="password" placeholder="password">
         </div>
       </nav>
-
 </header>
-<main>
 
-<section id="all-tabs-except-map">
+<main>
+  <section id="all-tabs-except-map">
     <section id="home-page">
-      <img src="images/head.jpg"/>
+        <img src="images/head.jpg"/>
     </section>
 
     <section id="register-form">
@@ -58,30 +58,30 @@
          <input id="emailInput" type="email" placeholder="you@email.com">
          <label for="passwordInput">Your Password</label>
          <input id="passwordInput" type="text" placeholder="password">
-         <input id="register-button" type="submit" name="submit" value="Register">
-         <input id="sign-in-button" type="submit" name="sign-in" value="Sign In">
-         <input id="sign-out-button" type="submit" name="sign-out" value="Sign Out">
+         <input id="register-form-button" type="submit" name="submit" value="Register" onkeydown = "if (event.keyCode == 13) { document.getElementById('signin-button').click();}">
+         <!-- <input id="sign-in-button" type="submit" name="sign-in" value="Sign In">
+         <input id="sign-out-button" type="submit" name="sign-out" value="Sign Out"> -->
        </form>
      </section>
 
      <section id="registered-signedin">
         <div id="create-new-list">
-             <button><a href="./new+list">Create List of Sites to Visit</a></button>
-             <ul id="new-list">
-               <li id="one-day-challenge"><button><a href="./one+day">1-Day Challenge</a></button></li>
-               <li id="two-day-challenge"><button><a href="./two+day">2-Day Challenge</a></button></li>
-             </ul>
+           <button><a href="./new+list">Create List of Sites to Visit</a></button>
+           <ul id="new-list">
+             <li id="one-day-challenge"><button><a href="./one+day">1-Day Challenge</a></button></li>
+             <li id="two-day-challenge"><button><a href="./two+day">2-Day Challenge</a></button></li>
+           </ul>
          </div>
 
          <div id="list-view">
-              <ul id="created-list"> </ul>
+            <ul id="created-list"> </ul>
          </div>
 
          <div id="all-my-quests">
-              <button><a href="./see+all+quests">See My Previous Quests</a></button>
-              <ul id="previous-quests">
-                <li>You don't have any quests yet</li>
-              </ul>
+            <button><a href="./see+all+quests">See My Previous Quests</a></button>
+            <ul id="previous-quests">
+              <li>You don't have any quests yet</li>
+            </ul>
         </div>
     </section>
 
@@ -98,16 +98,23 @@
     </section>
 
     <section id="about">
-      <div id="team-info">Team info placeholder</div>
+      <div id="team-pics">
+        <h1>Meet the team</h1>
+        <img src="images/jeremy.jpg" alt="jeremy yo">
+        <p>Now, this plan of, or rather Yojo's, touching the selection of our craft; I did not like that plan at all. I had not a little relied upon Queequeg's sagacity to point out the whaler best fitted to carry us and our fortunes securely. But as all my remonstrances produced no effect upon Queequeg, I was obliged to acquiesce; and accordingly prepared to set about this business with a determined rushing sort of energy and vigor, that should quickly settle that trifling little affair. Next morning early, leaving Queequeg shut up with Yojo in our little bedroom&mdash;for it seemed that it was some sort of Lent or Ramadan, or day of fasting, humiliation, and prayer with Queequeg and Yojo that day; HOW it was I never could find out, for, though I applied myself to it several times, I never could master his liturgies and XXXIX Articles&mdash;leaving Queequeg, then, fasting on his tomahawk pipe, and Yojo warming himself at his sacrificial fire of shavings, I sallied out among the shipping. After much prolonged sauntering and many random inquiries, I learnt that there were three ships up for three-years' voyages&mdash;The Devil-dam, the Tit-bit, and the Pequod. DEVIL-DAM, I do not know the origin of; TIT-BIT is obvious; PEQUOD, you will no doubt remember, was the name of a celebrated tribe of Massachusetts Indians; now extinct as the ancient Medes. I peered and pryed about the Devil-dam; from her, hopped over to the Tit-bit; and finally, going on board the Pequod, looked around her for a moment, and then decided that this was the very ship for us.</p>
+        <img src="images/tre.jpg" alt="jeremy yo">
+        <p>Now, this plan of Queequeg's, or rather Yojo's, touching the selection of our craft; I did not like that plan at all. I had not a little relied upon Queequeg's sagacity to point out the whaler best fitted to carry us and our fortunes securely. But as all my remonstrances produced no effect upon Queequeg, I was obliged to acquiesce; and accordingly prepared to set about this business with a determined rushing sort of energy and vigor, that should quickly settle that trifling little affair. Next morning early, leaving Queequeg shut up with Yojo in our little bedroom&mdash;for it seemed that it was some sort of Lent or Ramadan, or day of fasting, humiliation, and prayer with Queequeg and Yojo that day; HOW it was I never could find out, for, though I applied myself to it several times, I never could master his liturgies and XXXIX Articles&mdash;leaving Queequeg, then, fasting on his tomahawk pipe, and Yojo warming himself at his sacrificial fire of shavings, I sallied out among the shipping. After much prolonged sauntering and many random inquiries, I learnt that there were three ships up for three-years' voyages&mdash;The Devil-dam, the Tit-bit, and the Pequod. DEVIL-DAM, I do not know the origin of; TIT-BIT is obvious; PEQUOD, you will no doubt remember, was the name of a celebrated tribe of Massachusetts Indians; now extinct as the ancient Medes. I peered and pryed about the Devil-dam; from her, hopped over to the Tit-bit; and finally, going on board the Pequod, looked around her for a moment, and then decided that this was the very ship for us.</p>
+        <img src="images/derek.jpg" alt="jeremy yo">
+        <p>Now, this plan of Queequeg's, or rather Yojo's, touching the selection of our craft; I did not like that plan at all. I had not a little relied upon Queequeg's sagacity to point out the whaler best fitted to carry us and our fortunes securely. But as all my remonstrances produced no effect upon Queequeg, I was obliged to acquiesce; and accordingly prepared to set about this business with a determined rushing sort of energy and vigor, that should quickly settle that trifling little affair. Next morning early, leaving Queequeg shut up with Yojo in our little bedroom&mdash;for it seemed that it was some sort of Lent or Ramadan, or day of fasting, humiliation, and prayer with Queequeg and Yojo that day; HOW it was I never could find out, for, though I applied myself to it several times, I never could master his liturgies and XXXIX Articles&mdash;leaving Queequeg, then, fasting on his tomahawk pipe, and Yojo warming himself at his sacrificial fire of shavings, I sallied out among the shipping. After much prolonged sauntering and many random inquiries, I learnt that there were three ships up for three-years' voyages&mdash;The Devil-dam, the Tit-bit, and the Pequod. DEVIL-DAM, I do not know the origin of; TIT-BIT is obvious; PEQUOD, you will no doubt remember, was the name of a celebrated tribe of Massachusetts Indians; now extinct as the ancient Medes. I peered and pryed about the Devil-dam; from her, hopped over to the Tit-bit; and finally, going on board the Pequod, looked around her for a moment, and then decided that this was the very ship for us.</p>
+        <img src="images/tatiana.png" alt="jeremy yo">
+        <p>Now, this plan of Queequeg's, or rather Yojo's, touching the selection of our craft; I did not like that plan at all. I had not a little relied upon Queequeg's sagacity to point out the whaler best fitted to carry us and our fortunes securely. But as all my remonstrances produced no effect upon Queequeg, I was obliged to acquiesce; and accordingly prepared to set about this business with a determined rushing sort of energy and vigor, that should quickly settle that trifling little affair. Next morning early, leaving Queequeg shut up with Yojo in our little bedroom&mdash;for it seemed that it was some sort of Lent or Ramadan, or day of fasting, humiliation, and prayer with Queequeg and Yojo that day; HOW it was I never could find out, for, though I applied myself to it several times, I never could master his liturgies and XXXIX Articles&mdash;leaving Queequeg, then, fasting on his tomahawk pipe, and Yojo warming himself at his sacrificial fire of shavings, I sallied out among the shipping. After much prolonged sauntering and many random inquiries, I learnt that there were three ships up for three-years' voyages&mdash;The Devil-dam, the Tit-bit, and the Pequod. DEVIL-DAM, I do not know the origin of; TIT-BIT is obvious; PEQUOD, you will no doubt remember, was the name of a celebrated tribe of Massachusetts Indians; now extinct as the ancient Medes. I peered and pryed about the Devil-dam; from her, hopped over to the Tit-bit; and finally, going on board the Pequod, looked around her for a moment, and then decided that this was the very ship for us.</p>
+      </div>
     </section>
-
   </section>
 
   <section id="map-view">
     <div id="map"></div>
   </section>
-
-
 </main>
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
      <script>
@@ -128,11 +135,8 @@
     <script src="scripts/models/locations.js"></script>
     <script src="scripts/models/previousQuests.js"></script>
 
-
     <script src="scripts/views/listView.js"></script>
-    <script src="scripts/views/mapView.js"></script>
     <script src="scripts/views/pageView.js"></script>
-    <script src="scripts/views/previousQuestsView.js"></script>
 
     <script src="scripts/controllers/homeController.js"></script>
     <script src="scripts/controllers/aboutController.js"></script>

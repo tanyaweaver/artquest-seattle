@@ -5,17 +5,32 @@
 
   #logo {
     font-size: 20px;
-    width: 200px; }
+    width: 200px;
+  }
 
   #home-page {
     margin-top: 0;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+  }
 
   #map-view {
-    margin-top: 0; }
+    margin-top: 0;
+  }
 
   #menu-icon {
-    display: inline-block; }
+    display: inline-block;
+  }
+
+  #team-pics img {
+    display: block;
+    float: none;
+    margin: 0 auto;
+  }
+
+  #team-text {
+    display: block;
+    float: none;
+  }
 
   nav ul, nav:active ul {
     display: none;
@@ -26,13 +41,16 @@
     right: 20px;
     top: 60px;
     width: 50%;
-    border-radius: 4px 0 4px 4px; }
+    border-radius: 4px 0 4px 4px;
+  }
 
   nav li {
     text-align: center;
     width: 100%;
     padding: 10px 0;
-    margin: 0; }
+    margin: 0;
+  }
 
   nav:hover ul {
-    display: block; } }
+    display: block;
+  }
