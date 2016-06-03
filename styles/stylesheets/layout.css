@@ -96,6 +96,11 @@ section {
   margin-right: 10px;
 }
 
+  #monetize img {
+    max-width: 80px;
+    max-height: 360px;
+    float: right;
+  }
 #team-text p {
   float: right;
 }
