@@ -6,7 +6,7 @@
 #logo {
   font-family: 'Homemade Apple', cursive;
   font-weight: bold;
-  margin: 30px;
+  margin: 20px;
   font-size: 30px;
   float: left;
   width: 400px;
@@ -37,7 +37,6 @@ a:hover#menu-icon {
 section {
   margin: 80px auto 40px;
   max-width: 980px;
-  position: relative;
   padding: 20px;
 }
 
