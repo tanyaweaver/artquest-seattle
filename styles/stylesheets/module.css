@@ -35,12 +35,12 @@
   nav ul, nav:active ul {
     display: none;
     position: absolute;
-    padding: 20px;
+    padding: 10px;
     background: #fff;
     border: 5px solid #444;
     right: 20px;
     top: 60px;
-    width: 50%;
+    width: 30%;
     border-radius: 4px 0 4px 4px;
   }
 
