@@ -41,6 +41,38 @@ section {
   padding: 20px;
 }
 
+
+#home-page {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0;
+}
+
+  #welcome-body  {
+    color: #4C9CF1;
+    font-weight: bold;
+    padding-bottom: 0;
+  }
+  #welcome-body > p {
+  font-size: 12px;
+}
+
+  #home-page-head h1 {
+    font-family: 'Homemade Apple', cursive;
+    font-size: 24px;
+    width: 390px;
+    position: absolute;
+    left: 50%;
+    margin: 0 0 0 -195px;
+    text-align: center;
+    padding-top: 20px;
+  }
+
+
+  #all-tabs-except-map, #welcome-body {
+    margin-top: 0;
+  }
+
 #signIn-nav {
   display: none;
 }
@@ -64,6 +96,20 @@ section {
   margin-right: 10px;
 }
 
+  #monetize img {
+    max-width: 80px;
+    max-height: 360px;
+    float: right;
+  }
 #team-text p {
   float: right;
+}
+
+#home-page-head {
+  margin-bottom: 0;
+  margin-top: 40px;
+  display: block !important;
+  position: static;
+  width: 1280px;
+  height: 80px;
 }
