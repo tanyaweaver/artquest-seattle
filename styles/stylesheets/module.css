@@ -51,11 +51,3 @@
     padding: 10px 0;
     margin: 0;
   }
-
-  /*nav:hover ul {
-    display: block;
-  }*/
-
-  nav.show ul {
-    display: block;
-  }

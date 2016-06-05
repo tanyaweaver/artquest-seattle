@@ -43,7 +43,7 @@
 
 <main>
   <div id="signIn-nav">
-    <input id="email-signin" type="email" placeholder="yourEmail">
+    <input id="email-signin" type="email" placeholder="email@email.com">
     <input id="password-signin" type="password" placeholder="password" onkeydown = "if (event.keyCode == 13) { document.getElementById('sign-in-button').click();}">
   </div>
   <section id="all-tabs-except-map">
@@ -51,7 +51,7 @@
         <img src="images/head.jpg" alt="Seattle Public Art photo"/>
     </section>
 
-    <section id="register-form">
+    <!-- <section id="register-form">
        <form id="register">
          <label for="name-input">Your Name</label>
          <input id="name-input" type="text" placeholder="Screen Name">
@@ -61,7 +61,29 @@
          <input id="password-input" type="text" placeholder="password">
          <input id="register-form-button" type="submit" name="submit" value="Register">
        </form>
+     </section> -->
+
+     <section id="register-form">
+       <div class="row">
+         <div class="five columns">
+           <label for="name-input">Your Name</label>
+           <input id="name-input" class="u-full-width" type="text" placeholder="Name" >
+         </div>
+       </div>
+       <div class="row">
+         <div class="five columns">
+           <label for="email-input">Your email</label>
+           <input id="emailInput" class="u-full-width" type="email" placeholder="email@email.com" >
+
+         </div>
+         <div class="five columns">
+
+           <label for="password-input">Your password</label>
+           <input id="password-input" class="u-full-width" type="password" placeholder="password" >
+         </div>
+       </div>
      </section>
+
 
      <section id="registered-signedin">
         <div id="create-new-list">
