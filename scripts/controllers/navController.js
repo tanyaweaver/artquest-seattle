@@ -18,13 +18,13 @@
     $('nav ul').show();
     page(history.state);
   };
+  
   navController.menuHide = function() {
     $('#signIn-nav').hide();
     $('nav ul').hide();
   };
 
   navController.displayAbout = function() {
-
     navController.menuHide();
     $('#about').show().siblings().hide();
   };

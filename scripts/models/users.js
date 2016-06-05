@@ -24,9 +24,9 @@
   });
 
   User.prototype.register = function() {
-    this.userName = $('#nameInput').val();
-    var email = $('#emailInput').val();
-    var password = $('#passwordInput').val();
+    this.userName = $('#name-input').val();
+    var email = $('#email-input').val();
+    var password = $('#password-input').val();
     firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
