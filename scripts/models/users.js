@@ -142,7 +142,7 @@
       artquestUser.signedIn();
     } else {
       $('#sign-in-button').text('Sign In');
-      $('#register-button').show();
+      $('#register-button').parent().show();
       $('#email-signin').val('');
       $('#password-signin').val('');
     }
