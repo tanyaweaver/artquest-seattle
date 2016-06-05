@@ -35,9 +35,9 @@
     if ($('nav ul').is(':visible') ) {
       $('nav ul').hide();
     }
-    // else {
-    //   $('nav ul').show();
-    // }
+    else {
+      $('nav ul').show();
+    }
     page(history.state);
   };
 
