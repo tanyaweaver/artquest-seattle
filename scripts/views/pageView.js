@@ -84,6 +84,7 @@
     });
   };
 
+
   module.pageView = pageView;
   module.gClickTargetIndex = gClickTargetIndex;
   module.gArtListItem = gArtListItem;

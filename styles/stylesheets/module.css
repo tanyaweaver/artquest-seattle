@@ -52,6 +52,10 @@
     margin: 0;
   }
 
-  nav:hover ul {
+  /*nav:hover ul {
+    display: block;
+  }*/
+
+  nav.show ul {
     display: block;
   }

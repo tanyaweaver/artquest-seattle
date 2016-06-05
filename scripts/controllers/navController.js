@@ -2,7 +2,8 @@
   var navController = {};
 
   navController.displayHome = function() {
-    $('#signIn-nav').toggle(false);
+    navController.menuHide();
+
     var user = firebase.auth().currentUser;
     if (user === null) {
       $('#home-page').show().siblings().hide();
@@ -12,17 +13,25 @@
     }
   };
 
+  navController.menuShow = function(ctx) {
+    console.log(history.state, ctx);
+    $('nav ul').show();
+    page(history.state);
+  };
+  navController.menuHide = function() {
+    $('#signIn-nav').hide();
+    $('nav ul').hide();
+  };
+
   navController.displayAbout = function() {
-    console.log('about route');
-    $('#signIn-nav').toggle(false);
+
+    navController.menuHide();
     $('#about').show().siblings().hide();
   };
 
   navController.displayRegister = function() {
-    $('#signIn-nav').toggle(false);
-
+    navController.menuHide();
     $('#register-form').show().siblings().hide();
-    console.log('register controller');
     artquestUser.getUserQuests();
   };
 

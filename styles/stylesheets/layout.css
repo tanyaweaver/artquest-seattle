@@ -68,3 +68,17 @@ section {
 #team-text p {
   float: right;
 }
+
+#created-list li {
+  border: 1px solid black;
+  border-bottom: none;
+  text-align: left;
+}
+#created-list li input {
+  float: right;
+}
+#created-list li:last-child {
+
+  border-bottom: 1px solid black;
+
+}
