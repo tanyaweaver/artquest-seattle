@@ -1,17 +1,28 @@
 (function(module) {
   var navController = {};
 
+  $(window).resize( function() {
+    if ($('#menu-icon').is(':visible') ) {
+      $('nav ul').hide();
+      $('#menu-icon').removeClass('active');
+    } else {
+      $('nav ul').show();
+    }
+
+  });
+
   $('#sign-in-button').on('click', function(){
     $('#register-form').hide();
     $('#home-page').show();
     if ($('#sign-in-button').text() === 'Sign In') {
       $('#signIn-nav').toggle('#reveal');
-      if ($('#menu-icon').is(':visible') ) {
+      if ($('#menu-icon').is(':visible') && $('nav ul').is(':visible')) {
         $('nav ul').hide();
+        $('#menu-icon').removeClass('active');
       }
       var email = $('#email-signin').val();
       var password = $('#password-signin').val();
-      if(email !== 'email@email.com') {
+      if( email !== 'email@email.com' && email !== '') {
         artquestUser.signIn($('#email-signin').val(), $('#password-signin').val());
       };
     } else if ($('#sign-in-button').text() === 'Sign Out') {

@@ -35,7 +35,7 @@
           <li><a href="/about">About</a></li>
 
           <li><a id="register-button" href="/register">Register</a></li>
-          <li><a id="sign-in-button" href="#">Sign In</a></li>
+          <li><a id="sign-in-button" >Sign In</a></li>
 
         </ul>
       </nav>
@@ -52,24 +52,22 @@
     </section>
 
      <section id="register-form">
+       <div class="five columns">
        <div class="row">
-         <div class="five columns">
            <label for="name-input">Your Name</label>
            <input id="name-input" class="u-full-width" type="text" placeholder="Name" >
-         </div>
        </div>
        <div class="row">
-         <div class="five columns">
            <label for="email-input">Your email</label>
            <input id="emailInput" class="u-full-width" type="email" placeholder="email@email.com" >
-
-         </div>
-         <div class="five columns">
-
+       </div>
            <label for="password-input">Your password</label>
            <input id="password-input" class="u-full-width" type="password" placeholder="password" >
-         </div>
+       <div class="row">
+         <input id="register-form-button" type="submit" name="submit" value="Register" onkeydown = "if (event.keyCode == 13) { document.getElementById('sign-in-button').click();}">
+
        </div>
+     </div>
      </section>
 
 
