@@ -32,11 +32,15 @@
 
   navController.menuShow = function(ctx) {
     $('#signIn-nav').hide();
-    if ($('nav ul').is(':visible') ) {
-      $('nav ul').hide();
+    var $nav_ul = $('nav ul');
+    if ($nav_ul.is(':visible') ) {
+      $nav_ul.hide();
+      $('#menu-icon').removeClass('active');
+
     }
     else {
-      $('nav ul').show();
+      $nav_ul.show();
+      $('#menu-icon').addClass('active');
     }
     page(history.state);
   };
@@ -45,6 +49,7 @@
     $('#signIn-nav').hide();
     if ($('#menu-icon').is(':visible')){
       $('nav ul').hide();
+      $('#menu-icon').removeClass('active');
     }
   };
 
