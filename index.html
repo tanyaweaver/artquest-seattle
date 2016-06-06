@@ -1,153 +1,126 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Artquest Seattle</title>
-  <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
-  <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
-  <link rel="stylesheet" href="styles/stylesheets/map.css">
-  <link rel="stylesheet" href="styles/stylesheets/base.css">
-  <link rel="stylesheet" href="styles/stylesheets/skeleton.css">
-  <link rel="stylesheet" href="styles/stylesheets/layout.css">
-
-
-  <link rel="stylesheet" href="styles/stylesheets/module.css">
-  <link href="https://fonts.googleapis.com/css?family=Kalam|Pacifico|Kaushan+Script|Pinyon+Script|Alex+Brush|Homemade+Apple|Parisienne" rel="stylesheet" type="text/css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <script id="artlist-template" type="text/x-handlebars-template">
+    <title>Artquest Seattle</title>
+    <meta content="NO-CACHE" http-equiv="CACHE-CONTROL">
+    <meta content="NO-CACHE" http-equiv="CACHE-CONTROL">
+    <link href="styles/stylesheets/map.css" rel="stylesheet">
+    <link href="styles/stylesheets/base.css" rel="stylesheet">
+    <link href="styles/stylesheets/skeleton.css" rel="stylesheet">
+    <link href="styles/stylesheets/layout.css" rel="stylesheet">
+    <link href="styles/stylesheets/module.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kalam|Pacifico|Kaushan+Script|Pinyon+Script|Alex+Brush|Homemade+Apple|Parisienne" rel="stylesheet" type="text/css">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <script id="artlist-template" type="text/x-handlebars-template">
       <li >{{title}}<input id="artlist_{{index}}" data-test='{ "title": "{{title}}", "index": "{{index}}", "latitude": "{{latitude}}", "longitude": "{{longitude}}" }' type="checkbox"></li>
-  </script>
-
-  <script id="render-existing-quests-from-firebase" type="text/x-handlebars-template">
+    </script>
+    <script id="render-existing-quests-from-firebase" type="text/x-handlebars-template">
     <li id="{{index}}">{{type}}  created {{date}} <button>Go</button>
       <ul id="list-quest"></ul>
     </li>
-  </script>
+    </script>
 </head>
-
 <body>
-  <header>
-    <a id="logo" href="/">Artquest &nbsp; Seattle</a>
-      <nav >
-        <a href="/hamburgler" id="menu-icon"></a>
-        <ul id="top-nav">
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-
-          <li><a id="register-button" href="/register">Register</a></li>
-          <li><a id="sign-in-button" >Sign In</a></li>
-
-        </ul>
-      </nav>
-</header>
-
-<main>
-  <div id="signIn-nav">
-    <input id="email-signin" type="email" placeholder="email@email.com">
-    <input id="password-signin" type="password" placeholder="password" onkeydown = "if (event.keyCode == 13) { document.getElementById('sign-in-button').click();}">
-  </div>
-  <section id="all-tabs-except-map">
-    <section id="home-page">
-        <img src="images/head.jpg" alt="Seattle Public Art photo"/>
-    </section>
-
-     <section id="register-form">
-       <div class="five columns">
-       <div class="row">
-           <label for="name-input">Your Name</label>
-           <input id="name-input" class="u-full-width" type="text" placeholder="Name" >
-       </div>
-       <div class="row">
-           <label for="email-input">Your email</label>
-           <input id="emailInput" class="u-full-width" type="email" placeholder="email@email.com" >
-       </div>
-           <label for="password-input">Your password</label>
-           <input id="password-input" class="u-full-width" type="password" placeholder="password" >
-       <div class="row">
-         <input id="register-form-button" type="submit" name="submit" value="Register" onkeydown = "if (event.keyCode == 13) { document.getElementById('sign-in-button').click();}">
-
-       </div>
-     </div>
-     </section>
-
-
-     <section id="registered-signedin">
-        <div id="create-new-list">
-           <button><a href="./new+list">Create List of Sites to Visit</a></button>
-           <ul id="new-list">
-             <li id="one-day-challenge"><button><a href="./one+day">1-Day Challenge</a></button></li>
-             <li id="two-day-challenge"><button><a href="./two+day">2-Day Challenge</a></button></li>
-           </ul>
-         </div>
-
-         <div id="list-view">
-            <ul id="created-list"> </ul>
-         </div>
-
-         <div id="all-my-quests">
-            <button><a href="./see+all+quests">See My Previous Quests</a></button>
-            <ul id="previous-quests">
-              <li>You don't have any quests yet</li>
+    <header>
+        <a href="/" id="logo">Artquest &nbsp; Seattle</a>
+        <nav>
+            <a href="/hamburgler" id="menu-icon"></a>
+            <ul id="top-nav">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/about">About</a>
+                </li>
+                <li>
+                    <a href="/register" id="register-button">Register</a>
+                </li>
+                <li>
+                    <a id="sign-in-button">Sign In</a>
+                </li>
             </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="signIn-nav">
+            <input id="email-signin" placeholder="email@email.com" type="email"> <input id="password-signin" onkeydown="if (event.keyCode == 13) { document.getElementById('sign-in-button').click();}" placeholder="password" type="password">
         </div>
-    </section>
-
-    <section id="near-me-form">
-      <form id="near-me">
-        <!-- <input id="use-my-location-button" type="button" name="use-my-location" value="Use my Current Location"> -->
-        <input id="address-input" type="text" placeholder="Starting Address" value="2901 3rd Ave, Seattle, WA">
-        <label for="distance-input">Distance</label>
-        <input id="distance-input" type="number" placeholder="Distance in Meters" value="1000">
-        <label for="number-of-art-items-input">Number of Art Items</label>
-        <input id="art-items-qty-input" type="number" placeholder="How Many" value="20">
-        <button id="create-near-me-button" type="button" name="create" value="Create List"><a href="/near+address">Create List Near Address</a></button>
-      </form>
-    </section>
-
-    <section id="about">
-      <div id="team-pics">
-        <h1>Meet the team</h1>
-        <img src="images/jeremy.jpg" alt="Jeremy yo">
-        <p>Now, this plan of, or rather Yojo's, touching the selection of our craft; I did not like that plan at all. I had not a little relied upon Queequeg's sagacity to point out the whaler best fitted to carry us and our fortunes securely. But as all my remonstrances produced no effect upon Queequeg, I was obliged to acquiesce; and accordingly prepared to set about this business with a determined rushing sort of energy and vigor, that should quickly settle that trifling little affair. Next morning early, leaving Queequeg shut up with Yojo in our little bedroom&mdash;for it seemed that it was some sort of Lent or Ramadan, or day of fasting, humiliation, and prayer with Queequeg and Yojo that day; HOW it was I never could find out, for, though I applied myself to it several times, I never could master his liturgies and XXXIX Articles&mdash;leaving Queequeg, then, fasting on his tomahawk pipe, and Yojo warming himself at his sacrificial fire of shavings, I sallied out among the shipping. After much prolonged sauntering and many random inquiries, I learnt that there were three ships up for three-years' voyages&mdash;The Devil-dam, the Tit-bit, and the Pequod. DEVIL-DAM, I do not know the origin of; TIT-BIT is obvious; PEQUOD, you will no doubt remember, was the name of a celebrated tribe of Massachusetts Indians; now extinct as the ancient Medes. I peered and pryed about the Devil-dam; from her, hopped over to the Tit-bit; and finally, going on board the Pequod, looked around her for a moment, and then decided that this was the very ship for us.</p>
-        <img src="images/tre.jpg" alt="Tre yo">
-        <p>Now, this plan of Queequeg's, or rather Yojo's, touching the selection of our craft; I did not like that plan at all. I had not a little relied upon Queequeg's sagacity to point out the whaler best fitted to carry us and our fortunes securely. But as all my remonstrances produced no effect upon Queequeg, I was obliged to acquiesce; and accordingly prepared to set about this business with a determined rushing sort of energy and vigor, that should quickly settle that trifling little affair. Next morning early, leaving Queequeg shut up with Yojo in our little bedroom&mdash;for it seemed that it was some sort of Lent or Ramadan, or day of fasting, humiliation, and prayer with Queequeg and Yojo that day; HOW it was I never could find out, for, though I applied myself to it several times, I never could master his liturgies and XXXIX Articles&mdash;leaving Queequeg, then, fasting on his tomahawk pipe, and Yojo warming himself at his sacrificial fire of shavings, I sallied out among the shipping. After much prolonged sauntering and many random inquiries, I learnt that there were three ships up for three-years' voyages&mdash;The Devil-dam, the Tit-bit, and the Pequod. DEVIL-DAM, I do not know the origin of; TIT-BIT is obvious; PEQUOD, you will no doubt remember, was the name of a celebrated tribe of Massachusetts Indians; now extinct as the ancient Medes. I peered and pryed about the Devil-dam; from her, hopped over to the Tit-bit; and finally, going on board the Pequod, looked around her for a moment, and then decided that this was the very ship for us.</p>
-        <img src="images/derek.jpg" alt="Derek yo">
-        <p>Now, this plan of Queequeg's, or rather Yojo's, touching the selection of our craft; I did not like that plan at all. I had not a little relied upon Queequeg's sagacity to point out the whaler best fitted to carry us and our fortunes securely. But as all my remonstrances produced no effect upon Queequeg, I was obliged to acquiesce; and accordingly prepared to set about this business with a determined rushing sort of energy and vigor, that should quickly settle that trifling little affair. Next morning early, leaving Queequeg shut up with Yojo in our little bedroom&mdash;for it seemed that it was some sort of Lent or Ramadan, or day of fasting, humiliation, and prayer with Queequeg and Yojo that day; HOW it was I never could find out, for, though I applied myself to it several times, I never could master his liturgies and XXXIX Articles&mdash;leaving Queequeg, then, fasting on his tomahawk pipe, and Yojo warming himself at his sacrificial fire of shavings, I sallied out among the shipping. After much prolonged sauntering and many random inquiries, I learnt that there were three ships up for three-years' voyages&mdash;The Devil-dam, the Tit-bit, and the Pequod. DEVIL-DAM, I do not know the origin of; TIT-BIT is obvious; PEQUOD, you will no doubt remember, was the name of a celebrated tribe of Massachusetts Indians; now extinct as the ancient Medes. I peered and pryed about the Devil-dam; from her, hopped over to the Tit-bit; and finally, going on board the Pequod, looked around her for a moment, and then decided that this was the very ship for us.</p>
-        <img src="images/tatiana.png" alt="Tatiana yo">
-        <p>Now, this plan of Queequeg's, or rather Yojo's, touching the selection of our craft; I did not like that plan at all. I had not a little relied upon Queequeg's sagacity to point out the whaler best fitted to carry us and our fortunes securely. But as all my remonstrances produced no effect upon Queequeg, I was obliged to acquiesce; and accordingly prepared to set about this business with a determined rushing sort of energy and vigor, that should quickly settle that trifling little affair. Next morning early, leaving Queequeg shut up with Yojo in our little bedroom&mdash;for it seemed that it was some sort of Lent or Ramadan, or day of fasting, humiliation, and prayer with Queequeg and Yojo that day; HOW it was I never could find out, for, though I applied myself to it several times, I never could master his liturgies and XXXIX Articles&mdash;leaving Queequeg, then, fasting on his tomahawk pipe, and Yojo warming himself at his sacrificial fire of shavings, I sallied out among the shipping. After much prolonged sauntering and many random inquiries, I learnt that there were three ships up for three-years' voyages&mdash;The Devil-dam, the Tit-bit, and the Pequod. DEVIL-DAM, I do not know the origin of; TIT-BIT is obvious; PEQUOD, you will no doubt remember, was the name of a celebrated tribe of Massachusetts Indians; now extinct as the ancient Medes. I peered and pryed about the Devil-dam; from her, hopped over to the Tit-bit; and finally, going on board the Pequod, looked around her for a moment, and then decided that this was the very ship for us.</p>
-      </div>
-    </section>
-  </section>
-
-  <section id="map-view">
-    <div id="map"></div>
-  </section>
-</main>
+        <section id="all-tabs-except-map">
+            <section id="home-page">
+                <img alt="Seattle Public Art photo" src="images/head.jpg">
+            </section>
+            <section id="register-form">
+                <div class="five columns">
+                    <div class="row">
+                        <label for="name-input">Your Name</label> <input class="u-full-width" id="name-input" placeholder="Name" type="text">
+                    </div>
+                    <div class="row">
+                        <label for="email-input">Your email</label> <input class="u-full-width" id="emailInput" placeholder="email@email.com" type="email">
+                    </div><label for="password-input">Your password</label> <input class="u-full-width" id="password-input" placeholder="password" type="password">
+                    <div class="row">
+                        <input id="register-form-button" name="submit" onkeydown="if (event.keyCode == 13) { document.getElementById('sign-in-button').click();}" type="submit" value="Register">
+                    </div>
+                </div>
+            </section>
+            <section class="nine columns" id="registered-signedin">
+                <div class="row" id="create-new-list">
+                    <button class="three columns"><a href="./see+all+quests">Quest List</a></button> <button class="three columns"><a href="./new+list">New Quest</a></button>
+                    <ul id="new-list">
+                        <li id="one-day-challenge"><button class="five columns"><a href="./one+day">1-Day Challenge</a></button></li>
+                        <li id="two-day-challenge"><button class="five columns"><a href="./two+day">2-Day Challenge</a></button></li>
+                    </ul>
+                </div>
+                <div class="row 2-columns" id="all-my-quests">
+                    <ul id="previous-quests">
+                        <li>You don't have any quests yet</li>
+                    </ul>
+                </div>
+                <div id="list-view">
+                    <ul id="created-list"></ul>
+                </div>
+            </section>
+            <section class="nine columns" id="near-me-form">
+                <form id="near-me" name="near-me">
+                    <div class="row">
+                        <label for="address-input">Address</label> <input class="six columns" id="address-input" placeholder="Starting Address" type="text" value="2901 3rd Ave, Seattle, WA"> <button id="create-near-me-button" name="create" type="button" value="Create List"><a href="/near+address">Create List Near Address</a></button>
+                    </div>
+                    <div class="row">
+                        <label for="distance-input">Distance</label> <input class="four columns" id="distance-input" placeholder="Distance in Meters" type="number" value="1000"> <label for="number-of-art-items-input">Number of Art Items</label> <input class="four columns" id="art-items-qty-input" placeholder="How Many" type="number" value="20">
+                    </div>
+                </form>
+            </section>
+            <section id="about">
+                <div id="team-pics">
+                    <h1>Meet the team</h1><img alt="Jeremy yo" src="images/jeremy.jpg">
+                    <p>Now, this plan of, or rather Yojo's, touching the selection of our craft; I did not like that plan at all. I had not a little relied upon Queequeg's sagacity to point out the whaler best fitted to carry us and our fortunes securely. But as all my remonstrances produced no effect upon Queequeg, I was obliged to acquiesce; and accordingly prepared to set about this business with a determined rushing sort of energy and vigor, that should quickly settle that trifling little affair. Next morning early, leaving Queequeg shut up with Yojo in our little bedroom&mdash;for it seemed that it was some sort of Lent or Ramadan, or day of fasting, humiliation, and prayer with Queequeg and Yojo that day; HOW it was I never could find out, for, though I applied myself to it several times, I never could master his liturgies and XXXIX Articles&mdash;leaving Queequeg, then, fasting on his tomahawk pipe, and Yojo warming himself at his sacrificial fire of shavings, I sallied out among the shipping. After much prolonged sauntering and many random inquiries, I learnt that there were three ships up for three-years' voyages&mdash;The Devil-dam, the Tit-bit, and the Pequod. DEVIL-DAM, I do not know the origin of; TIT-BIT is obvious; PEQUOD, you will no doubt remember, was the name of a celebrated tribe of Massachusetts Indians; now extinct as the ancient Medes. I peered and pryed about the Devil-dam; from her, hopped over to the Tit-bit; and finally, going on board the Pequod, looked around her for a moment, and then decided that this was the very ship for us.</p><img alt="Tre yo" src="images/tre.jpg">
+                    <p>Now, this plan of Queequeg's, or rather Yojo's, touching the selection of our craft; I did not like that plan at all. I had not a little relied upon Queequeg's sagacity to point out the whaler best fitted to carry us and our fortunes securely. But as all my remonstrances produced no effect upon Queequeg, I was obliged to acquiesce; and accordingly prepared to set about this business with a determined rushing sort of energy and vigor, that should quickly settle that trifling little affair. Next morning early, leaving Queequeg shut up with Yojo in our little bedroom&mdash;for it seemed that it was some sort of Lent or Ramadan, or day of fasting, humiliation, and prayer with Queequeg and Yojo that day; HOW it was I never could find out, for, though I applied myself to it several times, I never could master his liturgies and XXXIX Articles&mdash;leaving Queequeg, then, fasting on his tomahawk pipe, and Yojo warming himself at his sacrificial fire of shavings, I sallied out among the shipping. After much prolonged sauntering and many random inquiries, I learnt that there were three ships up for three-years' voyages&mdash;The Devil-dam, the Tit-bit, and the Pequod. DEVIL-DAM, I do not know the origin of; TIT-BIT is obvious; PEQUOD, you will no doubt remember, was the name of a celebrated tribe of Massachusetts Indians; now extinct as the ancient Medes. I peered and pryed about the Devil-dam; from her, hopped over to the Tit-bit; and finally, going on board the Pequod, looked around her for a moment, and then decided that this was the very ship for us.</p><img alt="Derek yo" src="images/derek.jpg">
+                    <p>Now, this plan of Queequeg's, or rather Yojo's, touching the selection of our craft; I did not like that plan at all. I had not a little relied upon Queequeg's sagacity to point out the whaler best fitted to carry us and our fortunes securely. But as all my remonstrances produced no effect upon Queequeg, I was obliged to acquiesce; and accordingly prepared to set about this business with a determined rushing sort of energy and vigor, that should quickly settle that trifling little affair. Next morning early, leaving Queequeg shut up with Yojo in our little bedroom&mdash;for it seemed that it was some sort of Lent or Ramadan, or day of fasting, humiliation, and prayer with Queequeg and Yojo that day; HOW it was I never could find out, for, though I applied myself to it several times, I never could master his liturgies and XXXIX Articles&mdash;leaving Queequeg, then, fasting on his tomahawk pipe, and Yojo warming himself at his sacrificial fire of shavings, I sallied out among the shipping. After much prolonged sauntering and many random inquiries, I learnt that there were three ships up for three-years' voyages&mdash;The Devil-dam, the Tit-bit, and the Pequod. DEVIL-DAM, I do not know the origin of; TIT-BIT is obvious; PEQUOD, you will no doubt remember, was the name of a celebrated tribe of Massachusetts Indians; now extinct as the ancient Medes. I peered and pryed about the Devil-dam; from her, hopped over to the Tit-bit; and finally, going on board the Pequod, looked around her for a moment, and then decided that this was the very ship for us.</p><img alt="Tatiana yo" src="images/tatiana.png">
+                    <p>Now, this plan of Queequeg's, or rather Yojo's, touching the selection of our craft; I did not like that plan at all. I had not a little relied upon Queequeg's sagacity to point out the whaler best fitted to carry us and our fortunes securely. But as all my remonstrances produced no effect upon Queequeg, I was obliged to acquiesce; and accordingly prepared to set about this business with a determined rushing sort of energy and vigor, that should quickly settle that trifling little affair. Next morning early, leaving Queequeg shut up with Yojo in our little bedroom&mdash;for it seemed that it was some sort of Lent or Ramadan, or day of fasting, humiliation, and prayer with Queequeg and Yojo that day; HOW it was I never could find out, for, though I applied myself to it several times, I never could master his liturgies and XXXIX Articles&mdash;leaving Queequeg, then, fasting on his tomahawk pipe, and Yojo warming himself at his sacrificial fire of shavings, I sallied out among the shipping. After much prolonged sauntering and many random inquiries, I learnt that there were three ships up for three-years' voyages&mdash;The Devil-dam, the Tit-bit, and the Pequod. DEVIL-DAM, I do not know the origin of; TIT-BIT is obvious; PEQUOD, you will no doubt remember, was the name of a celebrated tribe of Massachusetts Indians; now extinct as the ancient Medes. I peered and pryed about the Devil-dam; from her, hopped over to the Tit-bit; and finally, going on board the Pequod, looked around her for a moment, and then decided that this was the very ship for us.</p>
+                </div>
+            </section>
+        </section>
+        <section id="map-view">
+            <div id="map"></div>
+        </section>
+    </main>
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqDawTWjuMKPStGhOectV2wZESIrHLUo&v=3.exp&libraries=visualization"></script>
-    <script src="vendor/scripts/jquery-2.1.4.js"></script>
+    <script src="vendor/scripts/jquery-2.1.4.js"></script> 
     <script src="vendor/scripts/handlebars.js"></script>
-
     <script src="scripts/models/firebaseinit.js"></script>
     <script src="scripts/models/onMap.js"></script>
     <script src="scripts/models/locations.js"></script>
     <script src="scripts/models/previousQuests.js"></script>
-
     <script src="scripts/views/listView.js"></script>
     <script src="scripts/views/pageView.js"></script>
-
     <script src="scripts/controllers/navController.js"></script>
     <script src="scripts/controllers/listController.js"></script>
-
     <script src="vendor/scripts/page.js"></script>
     <script src="scripts/controllers/routes.js"></script>
-
     <script src="vendor/scripts/dms.js"></script>
     <script src="vendor/scripts/latlon-spherical.js"></script>
-
     <script src="scripts/models/art.js"></script>
     <script src="scripts/models/users.js"></script>
-  </body>
-<footer>
-</footer>
+    <footer></footer>
+</body>
 </html>

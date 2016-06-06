@@ -79,12 +79,39 @@ section {
   border: 1px solid black;
   border-bottom: none;
   text-align: left;
+  font-size: 1.5em;
+  cursor: default;
 }
 #created-list li input {
   float: right;
+  padding-top: 1em;
+  font-size: 3em;
 }
-#created-list li:last-child {
 
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  font-size-adjust: auto;
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  padding: 10px;
+}
+
+#created-list li:last-child {
   border-bottom: 1px solid black;
 
+}
+
+li { cursor: pointer; cursor: hand; }
+#previous-quests li {
+  color: #4C9CF1;
+  line-height: 1.5em;
+  font-size: 1.5em;
+  padding: none;
+  margin: none;
+}
+section#near-me-form {
+  margin-top: 1em;
 }

@@ -16,6 +16,7 @@
     $('#home-page').show();
     if ($('#sign-in-button').text() === 'Sign In') {
       $('#signIn-nav').toggle('#reveal');
+      $('#email-signin').focus();
       if ($('#menu-icon').is(':visible') && $('nav ul').is(':visible')) {
         $('nav ul').hide();
         $('#menu-icon').removeClass('active');
@@ -72,6 +73,7 @@
   navController.displayRegister = function() {
     navController.menuHide();
     $('#register-form').show().siblings().hide();
+    $('#name-input').focus();
     artquestUser.getUserQuests();
   };
 
