@@ -115,3 +115,6 @@ li { cursor: pointer; cursor: hand; }
 section#near-me-form {
   margin-top: 1em;
 }
+#parameters-input-row label {
+  clear: both;
+}
