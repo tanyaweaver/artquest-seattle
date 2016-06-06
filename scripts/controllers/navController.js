@@ -37,6 +37,7 @@
     var user = firebase.auth().currentUser;
     if (user === null) {
       $('#home-page').show().siblings().hide();
+      $('#home-page-head').show();
     } else {
       page('/signedin');
     }

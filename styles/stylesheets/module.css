@@ -28,6 +28,10 @@
     margin: 0 auto;
   }
 
+  #team-pics > h1 {
+    font-size: 24px;
+  }
+
   #team-text {
     display: block;
     float: none;
