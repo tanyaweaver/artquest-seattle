@@ -19,13 +19,12 @@
 
 #registered-signedin {
   width: 80%;
-  margin: 0 auto;
   text-align: center;
 }
 
 #registered-signedin li {
   float: left;
-  clear: left;
+  /*clear: left;*/
   width: 100%;
   margin: 0 auto;
 }
@@ -33,6 +32,10 @@
 #one-day-challenge {
   width: 100%;
   margin: 0 auto;
+}
+
+#registered-signedin button {
+  width: 275px;
 }
 
 #all-my-quests {
