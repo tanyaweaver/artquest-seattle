@@ -41,7 +41,7 @@
   };
 
   var gArtListItem = {};
-  var gDistanceThreshold = 500;
+  var gDistanceThreshold = 5000;
   var gClickTargetIndex;
   var thereLat;
   var thereLon;
@@ -62,6 +62,14 @@
           var d = distanceBetweenLocations(hereLat, hereLon, thereLat,thereLon );
           if (d < gDistanceThreshold){
             $('#created-list li:eq(' + gClickTargetIndex + ') input').prop('checked', true);
+            var info = $('#created-list li:eq(' + gClickTargetIndex + ') input').data('test');
+            var foundItems = artquestUser.userArtList.filter(function(item, index, array){
+              // console.log(item.title, item.latitude, item.longitude, info.title, info.latitude, info.longitude);
+              if( item.title === info.title ) console.log("found at index:", index);
+              artquestUser.userArtList[index].completed = {date: new Date(), location:{latitude:info.latitude, longitude: info.longitude}, status: true};
+              return item.title === info.title && item.latitude === info.latitude && item.longitude === item.longitude;
+            },info);
+            console.log(foundItems);
           } else {
             $('#created-list li:eq(' + gClickTargetIndex + ') input').prop('checked', false);
           }
@@ -83,6 +91,7 @@
       listController.displayQuest(Quest.all[i].list);
     });
   };
+
 
   module.pageView = pageView;
   module.gClickTargetIndex = gClickTargetIndex;

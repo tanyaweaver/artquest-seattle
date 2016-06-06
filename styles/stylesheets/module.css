@@ -55,7 +55,12 @@
     padding: 10px 0;
     margin: 0;
   }
-
-  nav:hover ul {
-    display: block;
+  #previous-quests li {
+    color: #4C9CF1;
+    line-height: 1.2em;
+    font-size: 1.2em;
+    padding-top: .6em;
+    margin-bottom: -.7em;
+    margin-left: 1em;
   }
+}

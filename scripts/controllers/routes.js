@@ -7,5 +7,6 @@ page('/near+address', listView.getAddress, Locations.sitesNearAddress, listContr
 page('/signedin', pageView.displayOnRegistrationSignin);
 page('/new+list', pageView.createNewQuest);
 page('/see+all+quests',pageView.showAllQuests);
+page('/hamburgler', navController.menuShow);
 
 page();

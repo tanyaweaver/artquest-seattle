@@ -43,6 +43,20 @@
   display: block;
 }
 
+#all-my-quests li {
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  text-align: left;
+}
+
+#all-my-quests li button {
+  display: none;
+}
+#all-my-quests li:last-child {
+  border-bottom: 1px solid black;
+}
+
 #new-list {
   text-align: center;
 }

@@ -119,7 +119,7 @@
             // photoURL: "https://example.com/jane-q-user/profile.jpg"
           }).then(function() {
             $('#sign-in-button').text('Sign Out');
-            $('#register-button').hide();
+            $('#register-button').parent().hide();
 
             artquestUser.getUserData();
           }, function(error) {
@@ -130,7 +130,7 @@
         $('#signIn-nav').toggle(false);
 
         $('#sign-in-button').text('Sign Out');
-        $('#register-button').hide();
+        $('#register-button').parent().hide();
 
         artquestUser.getUserData();
       }
@@ -142,7 +142,7 @@
       artquestUser.signedIn();
     } else {
       $('#sign-in-button').text('Sign In');
-      $('#register-button').show();
+      $('#register-button').parent().show();
       $('#email-signin').val('');
       $('#password-signin').val('');
     }
