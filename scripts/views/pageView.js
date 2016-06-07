@@ -41,7 +41,7 @@
   };
 
   var gArtListItem = {};
-  var gDistanceThreshold = 5000;
+  var gDistanceThreshold = 50;
   var gClickTargetIndex;
   var thereLat;
   var thereLon;

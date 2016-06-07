@@ -114,11 +114,13 @@ section {
   text-align: left;
   font-size: 1.5em;
   cursor: default;
+  padding-left: .5em;
 }
 #created-list li input {
   float: right;
   padding-top: 1em;
-  font-size: 3em;
+  font-size: 1em;
+  padding-left: .5em;
 }
 
 input[type=checkbox]
@@ -130,6 +132,8 @@ input[type=checkbox]
   -webkit-transform: scale(2); /* Safari and Chrome */
   -o-transform: scale(2); /* Opera */
   padding: 10px;
+  margin-top: 20px;
+  margin-right: 20px;
 }
 
 #created-list li:last-child {
@@ -142,8 +146,8 @@ li { cursor: pointer; cursor: hand; }
   color: #4C9CF1;
   line-height: 1.5em;
   font-size: 1.5em;
-  padding: none;
-  margin: none;
+  width: 90%
+  padding-left: .5em;
 }
 section#near-me-form {
   margin-top: 1em;
