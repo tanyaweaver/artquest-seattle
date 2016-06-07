@@ -1,5 +1,13 @@
 (function(module) {
   var pageView = {};
+
+  var gArtListItem = {};
+  var gDistanceThreshold = 20;
+  var gClickTargetIndex;
+  var thereLat;
+  var thereLon;
+
+
   pageView.createNewQuest = function() {
     $('#new-list').show();
     $('#near-me-form').show();
@@ -40,12 +48,6 @@
     pageView.artListClickHandler();
   };
 
-  var gArtListItem = {};
-  var gDistanceThreshold = 50;
-  var gClickTargetIndex;
-  var thereLat;
-  var thereLon;
-
   pageView.artListClickHandler = function() {
     $('#created-list').delegate('input', 'click', function(e) {
       e.preventDefault();
@@ -69,6 +71,11 @@
               if( test ) {
                 console.log(item.title, info.title, 'found at index:', index);
                 artquestUser.userArtList[index].completed = {date: new Date(), location:{latitude:info.latitude, longitude: info.longitude}, status: true};
+
+                var user = firebase.auth().currentUser;
+                firebase.database().ref('users/' + user.uid).set({
+                  userArtList: artquestUser.userArtList
+                });
               }
               return test;
             },info);
@@ -78,6 +85,7 @@
               if(test){
                 console.log('match in quest list @ index:',index);
                 Quest.all[artquestUser.currentQuestIndex].list[index].completed = {date: new Date(), location:{latitude:info.latitude, longitude: info.longitude}, status: true};
+                artquestUser.saveNewQuestToFb(Quest.all);
               }
               return test;
             }, info);
