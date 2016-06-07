@@ -49,7 +49,7 @@
   pageView.artListClickHandler = function() {
     $('#created-list').delegate('input', 'click', function(e) {
       e.preventDefault();
-
+      console.log('clickhandler');
       gClickTargetIndex = $(this).parent('li').index();
       gArtListItem = $(event.target).data('test');
       thereLat = parseFloat(gArtListItem.latitude);
@@ -64,12 +64,23 @@
             $('#created-list li:eq(' + gClickTargetIndex + ') input').prop('checked', true);
             var info = $('#created-list li:eq(' + gClickTargetIndex + ') input').data('test');
             var foundItems = artquestUser.userArtList.filter(function(item, index, array){
+              var test = item.title === info.title && item.latitude === info.latitude && item.longitude === item.longitude;
               // console.log(item.title, item.latitude, item.longitude, info.title, info.latitude, info.longitude);
-              if( item.title === info.title ) console.log("found at index:", index);
-              artquestUser.userArtList[index].completed = {date: new Date(), location:{latitude:info.latitude, longitude: info.longitude}, status: true};
-              return item.title === info.title && item.latitude === info.latitude && item.longitude === item.longitude;
+              if( test ) {
+                console.log(item.title, info.title, 'found at index:', index);
+                artquestUser.userArtList[index].completed = {date: new Date(), location:{latitude:info.latitude, longitude: info.longitude}, status: true};
+              }
+              return test;
             },info);
-            console.log(foundItems);
+            console.log('master list', foundItems);
+            var foundQuestItems = Quest.all[artquestUser.currentQuestIndex].list.map(function(item,index, array) {
+              var test = item.title === info.title && item.latitude === info.latitude && item.longitude === item.longitude;
+              if(test){
+                console.log('match in quest list @ index:',index);
+                Quest.all[artquestUser.currentQuestIndex].list[index].completed = {date: new Date(), location:{latitude:info.latitude, longitude: info.longitude}, status: true};
+              }
+              return test;
+            }, info);
           } else {
             $('#created-list li:eq(' + gClickTargetIndex + ') input').prop('checked', false);
           }
@@ -88,6 +99,7 @@
   pageView.clickListeners = function() {
     $('#previous-quests').delegate('li', 'click', function() {
       var i = $('#previous-quests > li').index(this);
+      artquestUser.currentQuestIndex = i;
       listController.displayQuest(Quest.all[i].list);
     });
   };
