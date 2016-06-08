@@ -40,6 +40,15 @@
     pageView.artListClickHandler();
   };
 
+  pageView.generateAboutSection = function(array) {
+    var template = Handlebars.compile($('#about-template').html());
+    $('#about > *').remove();
+    array.forEach(function(item, index) {
+      item.index = index;
+      $('#about').append(template(item));
+    });
+  }
+
   var gArtListItem = {};
   var gDistanceThreshold = 500;
   var gClickTargetIndex;

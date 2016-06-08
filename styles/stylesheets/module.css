@@ -22,13 +22,13 @@
     display: inline-block;
   }
 
-  #team-pics img {
+  #about img {
     display: block;
     float: none;
     margin: 0 auto;
   }
 
-  #team-pics > h1 {
+  #about > h2 {
     font-size: 24px;
   }
 

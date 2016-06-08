@@ -16,6 +16,7 @@
   navController.displayAbout = function() {
     $('#signIn-nav').toggle(false);
     $('#about').show().siblings().hide();
+    pageView.generateAboutSection(content.about);
   };
 
   navController.displayRegister = function() {
