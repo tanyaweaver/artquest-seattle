@@ -7,7 +7,6 @@
   var thereLat;
   var thereLon;
 
-
   pageView.createNewQuest = function() {
     $('#new-list').show();
     $('#near-me-form').show();
@@ -46,6 +45,25 @@
       $('#created-list').append(template(item));
     });
     pageView.artListClickHandler();
+  };
+
+  pageView.generateAboutSection = function(array) {
+    var template = Handlebars.compile($('#about-template').html());
+    $('#about > *').remove();
+    function shuffleArray(array) {
+      for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+      }
+      return array;
+    };
+    shuffleArray(array);
+    array.forEach(function(item, index) {
+      item.index = index;
+      $('#about').append(template(item));
+    });
   };
 
   pageView.artListClickHandler = function() {

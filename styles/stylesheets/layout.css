@@ -90,14 +90,15 @@ section {
   display: block;
 }
 
-#team-pics h1 {
+#about h2 {
   text-align: center;
   font-family: 'Homemade Apple', cursive;
-  font-size: 30px;
+  font-size: 24px;
+  color: #2262AD;
   clear: both;
 }
 
-#team-pics img {
+#about img {
   max-width: 240px;
   max-height: 300px;
   float: left;
@@ -146,7 +147,7 @@ li { cursor: pointer; cursor: hand; }
   color: #4C9CF1;
   line-height: 1.5em;
   font-size: 1.5em;
-  width: 90%
+  width: 90%;
   padding-left: .5em;
 }
 section#near-me-form {

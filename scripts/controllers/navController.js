@@ -69,6 +69,7 @@
   navController.displayAbout = function() {
     navController.menuHide();
     $('#about').show().siblings().hide();
+    pageView.generateAboutSection(content.about);
   };
 
   navController.displayRegister = function() {
