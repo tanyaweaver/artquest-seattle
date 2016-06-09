@@ -83,21 +83,21 @@
           if (d < gDistanceThreshold){
             $('#created-list li:eq(' + gClickTargetIndex + ') input').prop('checked', true);
             var info = $('#created-list li:eq(' + gClickTargetIndex + ') input').data('test');
-            var foundItems = artquestUser.userArtList.filter(function(item, index, array){
-              var test = item.title === info.title && item.latitude === info.latitude && item.longitude === item.longitude;
-              // console.log(item.title, item.latitude, item.longitude, info.title, info.latitude, info.longitude);
-              if( test ) {
-                console.log(item.title, info.title, 'found at index:', index);
-                artquestUser.userArtList[index].completed = {date: new Date(), location:{latitude:info.latitude, longitude: info.longitude}, status: true};
-
-                var user = firebase.auth().currentUser;
-                firebase.database().ref('users/' + user.uid).set({
-                  userArtList: artquestUser.userArtList
-                });
-              }
-              return test;
-            },info);
-            console.log('master list', foundItems);
+            // var foundItems = artquestUser.userArtList.filter(function(item, index, array){
+            //   var test = item.title === info.title && item.latitude === info.latitude && item.longitude === item.longitude;
+            //   console.log(item.title, item.latitude, item.longitude, info.title, info.latitude, info.longitude);
+            //   if( test ) {
+            //     console.log(item.title, info.title, 'found at index:', index);
+            //     artquestUser.userArtList[index].completed = {date: new Date(), location:{latitude:info.latitude, longitude: info.longitude}, status: true};
+            //
+            //     var user = firebase.auth().currentUser;
+            //     firebase.database().ref('users/' + user.uid).set({
+            //       userArtList: artquestUser.userArtList
+            //     });
+            //   }
+            //   return test;
+            // },info);
+            // console.log('master list', foundItems);
             var foundQuestItems = Quest.all[artquestUser.currentQuestIndex].list.map(function(item,index, array) {
               var test = item.title === info.title && item.latitude === info.latitude && item.longitude === item.longitude;
               if(test){
