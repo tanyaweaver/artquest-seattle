@@ -68,6 +68,50 @@
 
     });
   };
+  Locations.sitesNearMe = function(ctx, next) {
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position){
+        var userLatitude = parseFloat(position.coords.latitude);
+        var userLongitude = parseFloat(position.coords.longitude);
+        var obj = { latitude: userLatitude, longitude: userLongitude, distance: ctx.distance};
+        var sortedByDistance = artquestUser.userArtList.map( function(current, index, array){
+          var distance = distanceBetweenLocations(parseFloat(current.latitude), parseFloat(current.longitude), parseFloat(this.latitude),parseFloat(this.longitude));
+          current.distance = distance;
+          return current;
+        }, obj).sort(function(a,b){
+          return a.distance - b.distance;
+        });
+        if ( ctx.quantity > 0){
+          sortedByDistance.length = ctx.quantity;
+        }
+        if (ctx.distance > 0) {
+          nearMe = sortedByDistance.filter(function (current, index, array) {
+            if (this.latitude && this.longitude ) {
+              var distance = distanceBetweenLocations(parseFloat(current.latitude), parseFloat(current.longitude), parseFloat(this.latitude),parseFloat(this.longitude));
+              if ( distance < this.distance){
+                return true;
+              } else {
+                return false;
+              }
+            }
+          }, obj);
+          if (nearMe.length === 0){
+            nearMe = sortedByDistance[0];
+          }
+        }
+        ctx.locations = ctx.quantity > 0 && ctx.distance > 0 ? nearMe : sortedByDistance;
+        ctx.typeChallenge = ctx.locations.length + ' Near Me';
+        var newDate = new Date();
+        var createdOn = (newDate.getMonth() + 1) + '/' + newDate.getDate() + '/' + newDate.getFullYear();
+        ctx.createdOn = createdOn;
+        next();
+
+      });
+    } else {
+      console.log('Geolocation is not supported by this browser.');
+    }
+  };
 
   distanceBetweenLocations = function (lat1, lon1, lat2, lon2) {
     // console.log(lat1,lon1, lat2,lon2);

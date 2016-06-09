@@ -19,13 +19,12 @@
 
 #registered-signedin {
   width: 80%;
-  margin: 0 auto;
   text-align: center;
 }
 
 #registered-signedin li {
   float: left;
-  clear: left;
+  /*clear: left;*/
   width: 100%;
   margin: 0 auto;
 }
@@ -35,9 +34,27 @@
   margin: 0 auto;
 }
 
+#registered-signedin button {
+  width: 275px;
+}
+
 #all-my-quests {
   clear:both;
   display: block;
+}
+
+#all-my-quests li {
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  text-align: left;
+}
+
+#all-my-quests li button {
+  display: none;
+}
+#all-my-quests li:last-child {
+  border-bottom: 1px solid black;
 }
 
 #new-list {

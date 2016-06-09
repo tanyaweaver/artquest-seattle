@@ -19,5 +19,15 @@
       .done(callback);
     }
   };
+  artList.find = function(title){
+    var foundList = artquestUser.userArtList.filter(function(item, index, array){
+      if ( item.title.search(title) >= 0){
+        return true;
+      } else {
+        return false;
+      }
+    },title);
+    return foundList;
+  };
   module.artList = artList;
 })(window);
