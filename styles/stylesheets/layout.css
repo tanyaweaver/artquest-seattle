@@ -46,6 +46,7 @@ font-size: 12px;
   position: absolute;
   left: 50%;
   text-align: center;
+  z-index: -1;
 }
 
 #menu-icon {
