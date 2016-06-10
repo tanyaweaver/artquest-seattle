@@ -6,6 +6,10 @@ body {
   color: #555;
 }
 
+body > * {
+  min-width: 320px;
+  }
+
 a {
   color: #4C9CF1;
   text-decoration: none;
@@ -24,12 +28,12 @@ header {
   background: #fff;
   margin-bottom: 20px;
   width: 100%;
+  min-width: 320px;
   height: 76px;
   position: fixed;
   top: 0;
   left: 0;
   border-bottom: 4px solid #4C9CF1;
-  z-index: 100;
 }
 
   nav {
@@ -44,7 +48,7 @@ header {
   li {
     display: inline-block;
     float: left;
-    padding: 10px;
+    padding-top: 10px;
   }
 
   h1 {
