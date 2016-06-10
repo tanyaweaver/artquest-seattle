@@ -121,52 +121,6 @@
 
   };
 
-  sitesNearMe = function (distanceFilter) {
-    var test = artquestUser.userArtList;
-    var nearMe = test.filter(function (current, index, array) {
-      if (artquestUser.latitude && artquestUser.longitude ) {
-        var distance = distanceBetweenLocations(parseFloat(current.latitude), parseFloat(current.longitude), artquestUser.latitude,artquestUser.longitude);
-        if ( distance < distanceFilter){
-          return true;
-        } else {
-          return false;
-        }
-      }
-    }, distanceFilter);
-    return nearMe;
-  };
-
-  getMyLocation = function() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(locationSuccess);
-    } else {
-      console.log('Geolocation is not supported by this browser.');
-    }
-  };
-
-  function locationSuccess(position) {
-    // console.log('setting user position: ', position.coords);
-    artquestUser.latitude = parseFloat(position.coords.latitude);
-    artquestUser.longitude = parseFloat(position.coords.longitude);
-    var nearbySites = sitesNearMe(500);
-    // console.log( nearbySites.length, nearbySites);
-  };
-
-  function codeAddress(address) {
-    var geocoder = new google.maps.Geocoder();
-
-    geocoder.geocode( { 'address': address}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        var latlng = results[0].geometry.location;
-        console.log(latlng.lat(), latlng.lng());
-        return([latlng.lat(), latlng.lng()]);
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
-
-  };
-
   module.Locations = Locations;
   module.tempList = tempList;
 })(window);
